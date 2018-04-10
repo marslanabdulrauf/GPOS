@@ -51,8 +51,9 @@ function calBalance() {
     document.getElementById('checkout').disabled = false;
 }
 function reCalBalance() {
+    var dis;
     try {
-        var dis = $('#dis').data("kendoNumericTextBox").value();
+        dis = $('#dis').data("kendoNumericTextBox").value();
     } catch (e) {
         $('#dis').data("kendoNumericTextBox").value(0);
         dis = 0;
@@ -62,6 +63,63 @@ function reCalBalance() {
     $('#tot').data("kendoNumericTextBox").value(now);
 }
 
+function FindAndAdd(dataitem,qty) {
+    var table = document.getElementById('i_table');
+    if (table.rows.length > 1) {
+        var i;
+        var prev = null;
+        for (i=1; i < table.rows.length; i++) {
+            if (dataitem.id == table.rows[i].cells[0].innerHTML) {
+                prev = table.rows[i];
+            }
+        }
+        if (prev != null) {
+            var datastr = prev.cells[0].innerHTML +
+                "|" +
+                prev.cells[1].innerHTML.trim() +
+                "|" +
+                prev.cells[2].innerHTML +
+                "|" +
+                prev.cells[3].innerHTML +
+                "|" +
+                prev.cells[4].innerHTML;
+            i = items.indexOf(datastr);
+            items.splice(i, 1);
+            var newqty = parseInt(prev.cells[3].innerHTML) + qty;
+            var newtotal = newqty * dataitem.retail_price;
+            prev.cells[3].innerHTML = newqty;
+            prev.cells[4].innerHTML = newtotal;
+            datastr = prev.cells[0].innerHTML +
+                "|" +
+                prev.cells[1].innerHTML.trim() +
+                "|" +
+                prev.cells[2].innerHTML +
+                "|" +
+                prev.cells[3].innerHTML +
+                "|" +
+                prev.cells[4].innerHTML;
+            items.push(datastr);
+            var box = $("#tot").data("kendoNumericTextBox");
+            box.value(newtotal);
+            var btn = document.getElementById(dataitem.id);
+            btn.onclick = function() {
+
+                AddTotal(-1 * newtotal);
+                removeItem(datastr);
+                var dv = this.parentElement.parentElement;
+                dv.remove();
+                document.getElementById('blnce').value = 0;
+                document.getElementById('rcv').value = 0;
+                document.getElementById('checkout').disabled = true;
+            }
+            return true;
+        } else {
+            return false;
+        }
+    } else {
+        return false;
+    }
+}
 
 function getOrder(e) {
     var dataitem = this.dataItem(e.item.index());
@@ -83,44 +141,47 @@ function getOrder(e) {
     var total = dataitem.retail_price * qty;
     var datastr = dataitem.id + "|" + dataitem.name.trim() + "|" + dataitem.retail_price + "|" + qty + "|" + total;
 
-    var t0 = document.createTextNode(" " + dataitem.id);
-    var t1 = document.createTextNode(" " + dataitem.name);
-    var t2 = document.createTextNode(" " + dataitem.retail_price);
-    var t3 = document.createTextNode(" " + qty);
-    var t4 = document.createTextNode(" " + total);
-    var t5 = document.createTextNode(" " + "\u00D7");
-    var btn = document.createElement("button");
-    btn.setAttribute("class", "btn btn-block btn-warning");
-    btn.appendChild(t5);
-    btn.tabIndex = -1;
-    btn.onclick = function() {
-        AddTotal(-1 * total);
-        removeItem(datastr);
-        var dv = this.parentElement.parentElement;
-        dv.remove();
-        document.getElementById('blnce').value = 0;
-        document.getElementById('rcv').value = 0;
-        document.getElementById('checkout').disabled = true;
-    };
-    td0.appendChild(t0);
-    td1.appendChild(t1);
-    td2.appendChild(t2);
-    td3.appendChild(t3);
-    td4.appendChild(t4);
-    td5.appendChild(btn);
-    tr.appendChild(td0);
-    tr.appendChild(td1);
-    tr.appendChild(td2);
-    tr.appendChild(td3);
-    tr.appendChild(td4);
-    tr.appendChild(td5);
-    document.getElementById('i_table').appendChild(tr);
+    if (!FindAndAdd(dataitem, qty)) {
+        var t0 = document.createTextNode(" " + dataitem.id);
+        var t1 = document.createTextNode(" " + dataitem.name);
+        var t2 = document.createTextNode(" " + dataitem.retail_price);
+        var t3 = document.createTextNode(" " + qty);
+        var t4 = document.createTextNode(" " + total);
+        var t5 = document.createTextNode(" " + "\u00D7");
+        var btn = document.createElement("button");
+        btn.setAttribute("class", "btn btn-block btn-warning");
+        btn.appendChild(t5);
+        btn.tabIndex = -1;
+        btn.id = dataitem.id;
+        btn.onclick = function() {
+            AddTotal(-1 * total);
+            removeItem(datastr);
+            var dv = this.parentElement.parentElement;
+            dv.remove();
+            document.getElementById('blnce').value = 0;
+            document.getElementById('rcv').value = 0;
+            document.getElementById('checkout').disabled = true;
+        };
+        td0.appendChild(t0);
+        td1.appendChild(t1);
+        td2.appendChild(t2);
+        td3.appendChild(t3);
+        td4.appendChild(t4);
+        td5.appendChild(btn);
+        tr.appendChild(td0);
+        tr.appendChild(td1);
+        tr.appendChild(td2);
+        tr.appendChild(td3);
+        tr.appendChild(td4);
+        tr.appendChild(td5);
+        document.getElementById('i_table').appendChild(tr);
 
-    AddTotal(total);
+        AddTotal(total);
+        items.push(datastr);
+    }
     document.getElementById('blnce').value = 0;
     document.getElementById('rcv').value = 0;
     document.getElementById('checkout').disabled = true;
-    items.push(datastr);
 }
 
 $(document).ready(function () {
@@ -162,4 +223,16 @@ function checkout() {
             }
     });
     }
+}
+
+
+//customer functions
+function customer_data() { 
+    return {
+        text: $('#customer').val().trim()
+    };
+}
+
+function setCustomer() {
+    
 }

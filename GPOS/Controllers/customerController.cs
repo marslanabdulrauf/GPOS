@@ -10,10 +10,9 @@ using Kendo.Mvc.UI;
 
 namespace GPOS.Controllers
 {
-    [Authorize(Roles = "admin")]
-    public class itemsController : Controller
+    public class customerController : Controller
     {
-        // GET: items
+        // GET: customer
         public ActionResult Index()
         {
             return View();
@@ -30,12 +29,12 @@ namespace GPOS.Controllers
                 new itemModel().Create(product);
             }
 
-            return Json(new[] {product}.ToDataSourceResult(request, ModelState));
+            return Json(new[] { product }.ToDataSourceResult(request, ModelState));
         }
 
         public ActionResult Read([DataSourceRequest] DataSourceRequest request)
         {
-            return Json(new itemModel().Read().ToDataSourceResult(request));
+            return Json(new customerModel().Read().ToDataSourceResult(request));
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
@@ -46,7 +45,7 @@ namespace GPOS.Controllers
                 new itemModel().Update(product);
             }
 
-            return Json(new[] {product}.ToDataSourceResult(request, ModelState));
+            return Json(new[] { product }.ToDataSourceResult(request, ModelState));
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
@@ -57,10 +56,9 @@ namespace GPOS.Controllers
                 new itemModel().Destroy(product);
             }
 
-            return Json(new[] {product}.ToDataSourceResult(request, ModelState));
+            return Json(new[] { product }.ToDataSourceResult(request, ModelState));
 
         }
-
         public JsonResult Filter_Read(string text)
         {
             text = text.ToLower();

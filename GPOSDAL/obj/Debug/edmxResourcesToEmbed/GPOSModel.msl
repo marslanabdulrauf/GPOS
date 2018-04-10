@@ -69,6 +69,7 @@
     <EntitySetMapping Name="customers">
       <EntityTypeMapping TypeName="GPOSModel.customer">
         <MappingFragment StoreEntitySet="customer">
+          <ScalarProperty Name="isActive" ColumnName="isActive" />
           <ScalarProperty Name="tag" ColumnName="tag" />
           <ScalarProperty Name="balance" ColumnName="balance" />
           <ScalarProperty Name="phone" ColumnName="phone" />

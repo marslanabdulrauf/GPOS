@@ -220,3 +220,19 @@ D:\Ediot's Data\Projects\Sheikh GG\GPOS\GPOS\obj\Debug\GPOS.csproj.CoreCompileIn
 D:\Ediot's Data\Projects\Sheikh GG\GPOS\GPOS\obj\Debug\GPOS.csproj.CopyComplete
 D:\Ediot's Data\Projects\Sheikh GG\GPOS\GPOS\obj\Debug\GPOS.dll
 D:\Ediot's Data\Projects\Sheikh GG\GPOS\GPOS\obj\Debug\GPOS.pdb
+D:\Ediot's Data\Projects\GPOS\GPOS\bin\CrystalDecisions.CrystalReports.Engine.dll
+D:\Ediot's Data\Projects\GPOS\GPOS\bin\CrystalDecisions.ReportSource.dll
+D:\Ediot's Data\Projects\GPOS\GPOS\bin\CrystalDecisions.Shared.dll
+D:\Ediot's Data\Projects\GPOS\GPOS\bin\CrystalDecisions.ReportAppServer.DataDefModel.dll
+D:\Ediot's Data\Projects\GPOS\GPOS\bin\CrystalDecisions.ReportAppServer.ClientDoc.dll
+D:\Ediot's Data\Projects\GPOS\GPOS\bin\CrystalDecisions.ReportAppServer.ReportDefModel.dll
+D:\Ediot's Data\Projects\GPOS\GPOS\bin\CrystalDecisions.ReportAppServer.Controllers.dll
+D:\Ediot's Data\Projects\GPOS\GPOS\bin\CrystalDecisions.ReportAppServer.CommLayer.dll
+D:\Ediot's Data\Projects\GPOS\GPOS\bin\CrystalDecisions.ReportAppServer.DataSetConversion.dll
+D:\Ediot's Data\Projects\GPOS\GPOS\bin\CrystalDecisions.ReportAppServer.Prompting.dll
+D:\Ediot's Data\Projects\GPOS\GPOS\bin\CrystalDecisions.ReportAppServer.XmlSerialize.dll
+D:\Ediot's Data\Projects\GPOS\GPOS\bin\CrystalDecisions.ReportAppServer.CubeDefModel.dll
+D:\Ediot's Data\Projects\GPOS\GPOS\bin\CrystalDecisions.ReportAppServer.CommonObjectModel.dll
+D:\Ediot's Data\Projects\GPOS\GPOS\bin\CrystalDecisions.ReportAppServer.ObjectFactory.dll
+D:\Ediot's Data\Projects\GPOS\GPOS\bin\CrystalDecisions.ReportAppServer.CommonControls.dll
+D:\Ediot's Data\Projects\GPOS\GPOS\bin\stdole.dll

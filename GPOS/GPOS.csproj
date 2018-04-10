@@ -209,6 +209,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\api\OrderController.cs" />
+    <Compile Include="Controllers\customerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\itemsController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -1974,6 +1975,7 @@
     <Content Include="Views\items\Index.cshtml" />
     <Content Include="Views\Home\PlaceOrder.cshtml" />
     <Content Include="Views\order\Index.cshtml" />
+    <Content Include="Views\customer\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

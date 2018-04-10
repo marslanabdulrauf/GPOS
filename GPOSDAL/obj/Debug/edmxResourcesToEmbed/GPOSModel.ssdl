@@ -81,6 +81,7 @@
     <Property Name="phone" Type="nvarchar(max)" />
     <Property Name="balance" Type="int" />
     <Property Name="tag" Type="bit" />
+    <Property Name="isActive" Type="bit" />
   </EntityType>
   <EntityType Name="customer_transection">
     <Key>

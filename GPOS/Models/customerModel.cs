@@ -26,7 +26,7 @@ namespace GPOS.Models
             return GetAll();
         }
 
-        public void Create(customer product)
+        public int Create(customer product)
         {
             if (!UpdateDatabase)
             {
@@ -48,12 +48,14 @@ namespace GPOS.Models
                 entity.phone = product.phone;
                 entity.balance = product.balance;
                 entity.tag = product.tag;
+                entity.isActive = product.isActive;
 
                 entities.customers.Add(entity);
                 entities.SaveChanges();
 
                 product.id = entity.id;
             }
+            return product.id;
         }
 
         public void Update(customer product)
@@ -70,6 +72,7 @@ namespace GPOS.Models
                     target.phone = product.phone;
                     target.balance = product.balance;
                     target.tag = product.tag;
+                    target.isActive = product.isActive;
                 }
                 entities.SaveChanges();
             }
@@ -83,6 +86,7 @@ namespace GPOS.Models
                 entity.phone = product.phone;
                 entity.balance = product.balance;
                 entity.tag = product.tag;
+                entity.isActive = product.isActive;
 
                 entities.customers.Attach(entity);
                 entities.Entry(entity).State = EntityState.Modified;

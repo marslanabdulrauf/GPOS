@@ -28,6 +28,7 @@ namespace GPOSDAL
         public string phone { get; set; }
         public Nullable<int> balance { get; set; }
         public Nullable<bool> tag { get; set; }
+        public Nullable<bool> isActive { get; set; }
     
         public virtual branch branch { protected get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
