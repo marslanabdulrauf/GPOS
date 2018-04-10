@@ -1,0 +1,18 @@
+﻿*{
+    box-sizing: border-box;
+}
+
+.modal-header,.close {
+    background-color: orangered;
+    color: white !important;
+    text-align: center;
+    font-size: 30px;
+}
+
+td {
+    font-size: 20px;
+    padding: 2px;
+}
+.k-input,label {
+    font-size: 20px !important;
+}

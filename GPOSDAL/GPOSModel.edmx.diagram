@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="5f2b8257a006417dab026c31b5797896" Name="Diagram1" ZoomLevel="89" >
+        <EntityTypeShape EntityType="GPOSModel.C__MigrationHistory" Width="1.5" PointX="7.75" PointY="0.75" />
+        <EntityTypeShape EntityType="GPOSModel.AspNetRole" Width="1.5" PointX="0.75" PointY="3.875" />
+        <EntityTypeShape EntityType="GPOSModel.AspNetUserClaim" Width="1.5" PointX="5.25" PointY="23" />
+        <EntityTypeShape EntityType="GPOSModel.AspNetUserLogin" Width="1.5" PointX="5.25" PointY="1.375" />
+        <EntityTypeShape EntityType="GPOSModel.AspNetUser" Width="1.5" PointX="3" PointY="2.5" />
+        <EntityTypeShape EntityType="GPOSModel.branch" Width="1.5" PointX="0.75" PointY="11.125" />
+        <EntityTypeShape EntityType="GPOSModel.customer" Width="1.5" PointX="3" PointY="8.25" />
+        <EntityTypeShape EntityType="GPOSModel.customer_transection" Width="1.5" PointX="5.25" PointY="12.75" />
+        <EntityTypeShape EntityType="GPOSModel.item" Width="1.5" PointX="3" PointY="15.875" />
+        <EntityTypeShape EntityType="GPOSModel.order_items" Width="1.5" PointX="7.5" PointY="12.75" />
+        <EntityTypeShape EntityType="GPOSModel.order_packages" Width="1.5" PointX="7.5" PointY="8.25" />
+        <EntityTypeShape EntityType="GPOSModel.order_return" Width="1.5" PointX="10.5" PointY="8.375" />
+        <EntityTypeShape EntityType="GPOSModel.order_return_items" Width="1.5" PointX="12.75" PointY="13.25" />
+        <EntityTypeShape EntityType="GPOSModel.order_return_packages" Width="1.5" PointX="12.75" PointY="8.625" />
+        <EntityTypeShape EntityType="GPOSModel.order" Width="1.5" PointX="5.25" PointY="8" />
+        <EntityTypeShape EntityType="GPOSModel.package" Width="1.5" PointX="5.25" PointY="4.25" />
+        <EntityTypeShape EntityType="GPOSModel.package_items" Width="1.5" PointX="5.25" PointY="20" />
+        <EntityTypeShape EntityType="GPOSModel.purchase_history" Width="1.5" PointX="5.25" PointY="17" />
+        <AssociationConnector Association="GPOSModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="GPOSModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="GPOSModel.FK_order_return_AspNetUsers" />
+        <AssociationConnector Association="GPOSModel.FK_orders_AspNetUsers" />
+        <AssociationConnector Association="GPOSModel.FK_customer_branch" />
+        <AssociationConnector Association="GPOSModel.FK_item_branch" />
+        <AssociationConnector Association="GPOSModel.FK_customer_transection_customer" />
+        <AssociationConnector Association="GPOSModel.FK_orders_customer" />
+        <AssociationConnector Association="GPOSModel.FK_order_items_item" />
+        <AssociationConnector Association="GPOSModel.FK_order_return_items_item" />
+        <AssociationConnector Association="GPOSModel.FK_package_items_item" />
+        <AssociationConnector Association="GPOSModel.FK_purchase_history_item" />
+        <AssociationConnector Association="GPOSModel.FK_order_items_orders" />
+        <AssociationConnector Association="GPOSModel.FK_order_packages_orders" />
+        <AssociationConnector Association="GPOSModel.FK_order_packages_package" />
+        <AssociationConnector Association="GPOSModel.FK_order_return_items_order_return" />
+        <AssociationConnector Association="GPOSModel.FK_order_return_orders" />
+        <AssociationConnector Association="GPOSModel.FK_order_return_packages_order_return" />
+        <AssociationConnector Association="GPOSModel.FK_order_return_packages_package" />
+        <AssociationConnector Association="GPOSModel.FK_package_items_package" />
+        <AssociationConnector Association="GPOSModel.AspNetUserRoles" />
+        <EntityTypeShape EntityType="GPOSModel.user_branch" Width="1.5" PointX="8.25" PointY="5" />
+        <AssociationConnector Association="GPOSModel.FK_user_branch_AspNetUsers" />
+        <AssociationConnector Association="GPOSModel.FK_user_branch_branch" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
