@@ -7,7 +7,6 @@ D:\Ediot's Data\Projects\GPOS\GPOSDAL\bin\Debug\EntityFramework.xml
 D:\Ediot's Data\Projects\GPOS\GPOSDAL\bin\Debug\EntityFramework.SqlServer.xml
 D:\Ediot's Data\Projects\GPOS\GPOSDAL\obj\Debug\GPOSDAL.csprojResolveAssemblyReference.cache
 D:\Ediot's Data\Projects\GPOS\GPOSDAL\obj\Debug\GPOSDAL.csproj.CoreCompileInputs.cache
-D:\Ediot's Data\Projects\GPOS\GPOSDAL\obj\Debug\GPOSDAL.csproj.CopyComplete
 D:\Ediot's Data\Projects\GPOS\GPOSDAL\obj\Debug\GPOSDAL.dll
 D:\Ediot's Data\Projects\GPOS\GPOSDAL\obj\Debug\GPOSDAL.pdb
 D:\Ediot's Data\Projects\Sheikh GG\GPOS\GPOSDAL\bin\Debug\GPOSDAL.dll.config

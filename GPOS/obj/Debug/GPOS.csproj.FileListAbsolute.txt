@@ -98,7 +98,6 @@ D:\Ediot's Data\Projects\GPOS\GPOS\bin\uk-UA\Kendo.Mvc.resources.dll
 D:\Ediot's Data\Projects\GPOS\GPOS\bin\zh-CN\Kendo.Mvc.resources.dll
 D:\Ediot's Data\Projects\GPOS\GPOS\obj\Debug\GPOS.csprojResolveAssemblyReference.cache
 D:\Ediot's Data\Projects\GPOS\GPOS\obj\Debug\GPOS.csproj.CoreCompileInputs.cache
-D:\Ediot's Data\Projects\GPOS\GPOS\obj\Debug\GPOS.csproj.CopyComplete
 D:\Ediot's Data\Projects\GPOS\GPOS\obj\Debug\GPOS.dll
 D:\Ediot's Data\Projects\GPOS\GPOS\obj\Debug\GPOS.pdb
 D:\Ediot's Data\Projects\Sheikh GG\GPOS\GPOS\bin\ApplicationInsights.config
@@ -220,9 +219,6 @@ D:\Ediot's Data\Projects\Sheikh GG\GPOS\GPOS\obj\Debug\GPOS.csproj.CoreCompileIn
 D:\Ediot's Data\Projects\Sheikh GG\GPOS\GPOS\obj\Debug\GPOS.csproj.CopyComplete
 D:\Ediot's Data\Projects\Sheikh GG\GPOS\GPOS\obj\Debug\GPOS.dll
 D:\Ediot's Data\Projects\Sheikh GG\GPOS\GPOS\obj\Debug\GPOS.pdb
-D:\Ediot's Data\Projects\GPOS\GPOS\bin\CrystalDecisions.CrystalReports.Engine.dll
-D:\Ediot's Data\Projects\GPOS\GPOS\bin\CrystalDecisions.ReportSource.dll
-D:\Ediot's Data\Projects\GPOS\GPOS\bin\CrystalDecisions.Shared.dll
 D:\Ediot's Data\Projects\GPOS\GPOS\bin\CrystalDecisions.ReportAppServer.DataDefModel.dll
 D:\Ediot's Data\Projects\GPOS\GPOS\bin\CrystalDecisions.ReportAppServer.ClientDoc.dll
 D:\Ediot's Data\Projects\GPOS\GPOS\bin\CrystalDecisions.ReportAppServer.ReportDefModel.dll

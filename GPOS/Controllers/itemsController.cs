@@ -67,7 +67,12 @@ namespace GPOS.Controllers
             var products = new itemModel().Read();
             if (!string.IsNullOrEmpty(text))
             {
-                products = products.Where(i => (i.name.ToLower().Contains(text) || i.Barcode.Equals(text)) && i.isActive && i.tag);
+                products = products.Where(i =>
+                    (i.name.ToLower().Contains(text) || i.Barcode.Equals(text)) && i.isActive && i.tag);
+            }
+            else
+            {
+                products = products.Where(i => i.Barcode.Contains("-1"));
             }
             return Json(products, JsonRequestBehavior.AllowGet);
         }

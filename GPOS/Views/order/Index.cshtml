@@ -12,10 +12,10 @@
       .Columns(c =>
       {
           c.Bound(o => o.id).Title("Receipt #").Width(120)
-          .ClientFooterTemplate("Total Count : #:count#");
-          c.Bound(o => o.dt).Title("Date Time").Width(150);
+              .ClientFooterTemplate("Total Count : #:count#");
+          c.Bound(o => o.dt).Title("Date Time").Format("{0:MM/dd/yyyy}").Width(150);
           c.Bound(o => o.total_amount).Title("Total Amount").Width(150)
-          .ClientFooterTemplate("Grand Total : #:sum#");
+              .ClientFooterTemplate("Grand Total : #:sum#");
       })
       .ToolBar(t=>t.Excel())
       .Pageable()
@@ -30,6 +30,7 @@
       .DataSource(ds=>ds
           .Ajax()
           .PageSize(10)
+          .Group(g=>g.Add(gr=>gr.id))
           .Aggregates(ag=> { ag.Add(i => i.id).Count();
                                ag.Add(i => i.total_amount).Sum();
           })
