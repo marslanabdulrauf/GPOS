@@ -38,17 +38,22 @@ function calBalance() {
     } catch (e) {
         rcv = 0;
     }
+    if (isNaN(rcv)) {
+        rcv = 0;
+    }
     var bill = parseInt($('#tot').data("kendoNumericTextBox").value());
     var rem = rcv - bill;
     if (rem < 0) {
-        alert("Pay Full Amount!");
-        document.getElementById('checkout').disabled = true;
         $('#blnce').data("kendoNumericTextBox").value(0);
-        $('#products').data('kendoAutoComplete').focus();
+        document.getElementById('errmsg').innerHTML = "     Pay full amount";
+        $('#alertModel').modal();
         return;
     };
+    if (bill == 0) {
+        return;
+    }
     $('#blnce').data("kendoNumericTextBox").value(rem);
-    document.getElementById('checkout').disabled = false;
+
 }
 function reCalBalance() {
     var dis;
@@ -57,10 +62,15 @@ function reCalBalance() {
     } catch (e) {
         $('#dis').data("kendoNumericTextBox").value(0);
         dis = 0;
-    } 
+    }
+    if (isNaN(dis)) {
+        $('#dis').data("kendoNumericTextBox").value(0);
+        dis = 0;
+    }
     var prev = $('#tot').data("kendoNumericTextBox").value();
     var now = prev - dis;
     $('#tot').data("kendoNumericTextBox").value(now);
+    $('#rcv').data("KendoNumericTextBox").value("");
 }
 
 function FindAndAdd(dataitem,qty) {
@@ -109,8 +119,7 @@ function FindAndAdd(dataitem,qty) {
                 var dv = this.parentElement.parentElement;
                 dv.remove();
                 document.getElementById('blnce').value = 0;
-                document.getElementById('rcv').value = 0;
-                document.getElementById('checkout').disabled = true;
+                document.getElementById('rcv').value = "";
             }
             return true;
         } else {
@@ -159,8 +168,7 @@ function getOrder(e) {
             var dv = this.parentElement.parentElement;
             dv.remove();
             document.getElementById('blnce').value = 0;
-            document.getElementById('rcv').value = 0;
-            document.getElementById('checkout').disabled = true;
+            document.getElementById('rcv').value = "";
         };
         td0.appendChild(t0);
         td1.appendChild(t1);
@@ -180,8 +188,7 @@ function getOrder(e) {
         items.push(datastr);
     }
     document.getElementById('blnce').value = 0;
-    document.getElementById('rcv').value = 0;
-    document.getElementById('checkout').disabled = true;
+    document.getElementById('rcv').value = "";
 }
 
 $(document).ready(function () {
@@ -197,13 +204,21 @@ function checkout() {
     if (items.length === 0) {
         return;
     } else {
-        document.getElementById('checkout').disable = true;
+
         var tot = $('#tot').val();
         var dis = $('#dis').val();
         var rcv = $('#rcv').val(); 
         $.ajax({
             type: "POST",
-            url: "http://localhost:62546/api/Order/SetOrder?items=" +
+            //url: "http://localhost:62546/api/Order/SetOrder?items=" +
+            //    items +
+            //    "&tot=" +
+            //    tot +
+            //    "&dis=" +
+            //    dis +
+            //    "&rcv=" +
+            //rcv,
+            url: "http://localhost/GPOS/api/Order/SetOrder?items=" +
                 items +
                 "&tot=" +
                 tot +
@@ -218,7 +233,6 @@ function checkout() {
                 document.getElementById('errmsg').innerHTML = res.IncomingMessage;
                 $('#alertModel').modal();
                 $('#products').data('kendoAutoComplete').focus();
-                document.getElementById('checkout').disabled = false;
                 return;
             }
     });

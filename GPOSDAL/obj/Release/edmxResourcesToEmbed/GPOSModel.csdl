@@ -1,0 +1,640 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="GPOSModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="GPOSEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="C__MigrationHistory" EntityType="GPOSModel.C__MigrationHistory" />
+    <EntitySet Name="AspNetRoles" EntityType="GPOSModel.AspNetRole" />
+    <EntitySet Name="AspNetUserClaims" EntityType="GPOSModel.AspNetUserClaim" />
+    <EntitySet Name="AspNetUserLogins" EntityType="GPOSModel.AspNetUserLogin" />
+    <EntitySet Name="AspNetUsers" EntityType="GPOSModel.AspNetUser" />
+    <EntitySet Name="branches" EntityType="GPOSModel.branch" />
+    <EntitySet Name="customers" EntityType="GPOSModel.customer" />
+    <EntitySet Name="customer_transection" EntityType="GPOSModel.customer_transection" />
+    <EntitySet Name="items" EntityType="GPOSModel.item" />
+    <EntitySet Name="order_items" EntityType="GPOSModel.order_items" />
+    <EntitySet Name="order_packages" EntityType="GPOSModel.order_packages" />
+    <EntitySet Name="order_return" EntityType="GPOSModel.order_return" />
+    <EntitySet Name="order_return_items" EntityType="GPOSModel.order_return_items" />
+    <EntitySet Name="order_return_packages" EntityType="GPOSModel.order_return_packages" />
+    <EntitySet Name="orders" EntityType="GPOSModel.order" />
+    <EntitySet Name="packages" EntityType="GPOSModel.package" />
+    <EntitySet Name="package_items" EntityType="GPOSModel.package_items" />
+    <EntitySet Name="purchase_history" EntityType="GPOSModel.purchase_history" />
+    <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="GPOSModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUser" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserClaim" EntitySet="AspNetUserClaims" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="GPOSModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUser" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserLogin" EntitySet="AspNetUserLogins" />
+    </AssociationSet>
+    <AssociationSet Name="FK_order_return_AspNetUsers" Association="GPOSModel.FK_order_return_AspNetUsers">
+      <End Role="AspNetUser" EntitySet="AspNetUsers" />
+      <End Role="order_return" EntitySet="order_return" />
+    </AssociationSet>
+    <AssociationSet Name="FK_orders_AspNetUsers" Association="GPOSModel.FK_orders_AspNetUsers">
+      <End Role="AspNetUser" EntitySet="AspNetUsers" />
+      <End Role="order" EntitySet="orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_customer_branch" Association="GPOSModel.FK_customer_branch">
+      <End Role="branch" EntitySet="branches" />
+      <End Role="customer" EntitySet="customers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_item_branch" Association="GPOSModel.FK_item_branch">
+      <End Role="branch" EntitySet="branches" />
+      <End Role="item" EntitySet="items" />
+    </AssociationSet>
+    <AssociationSet Name="FK_customer_transection_customer" Association="GPOSModel.FK_customer_transection_customer">
+      <End Role="customer" EntitySet="customers" />
+      <End Role="customer_transection" EntitySet="customer_transection" />
+    </AssociationSet>
+    <AssociationSet Name="FK_orders_customer" Association="GPOSModel.FK_orders_customer">
+      <End Role="customer" EntitySet="customers" />
+      <End Role="order" EntitySet="orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_order_items_item" Association="GPOSModel.FK_order_items_item">
+      <End Role="item" EntitySet="items" />
+      <End Role="order_items" EntitySet="order_items" />
+    </AssociationSet>
+    <AssociationSet Name="FK_order_return_items_item" Association="GPOSModel.FK_order_return_items_item">
+      <End Role="item" EntitySet="items" />
+      <End Role="order_return_items" EntitySet="order_return_items" />
+    </AssociationSet>
+    <AssociationSet Name="FK_package_items_item" Association="GPOSModel.FK_package_items_item">
+      <End Role="item" EntitySet="items" />
+      <End Role="package_items" EntitySet="package_items" />
+    </AssociationSet>
+    <AssociationSet Name="FK_purchase_history_item" Association="GPOSModel.FK_purchase_history_item">
+      <End Role="item" EntitySet="items" />
+      <End Role="purchase_history" EntitySet="purchase_history" />
+    </AssociationSet>
+    <AssociationSet Name="FK_order_items_orders" Association="GPOSModel.FK_order_items_orders">
+      <End Role="order" EntitySet="orders" />
+      <End Role="order_items" EntitySet="order_items" />
+    </AssociationSet>
+    <AssociationSet Name="FK_order_packages_orders" Association="GPOSModel.FK_order_packages_orders">
+      <End Role="order" EntitySet="orders" />
+      <End Role="order_packages" EntitySet="order_packages" />
+    </AssociationSet>
+    <AssociationSet Name="FK_order_packages_package" Association="GPOSModel.FK_order_packages_package">
+      <End Role="package" EntitySet="packages" />
+      <End Role="order_packages" EntitySet="order_packages" />
+    </AssociationSet>
+    <AssociationSet Name="FK_order_return_items_order_return" Association="GPOSModel.FK_order_return_items_order_return">
+      <End Role="order_return" EntitySet="order_return" />
+      <End Role="order_return_items" EntitySet="order_return_items" />
+    </AssociationSet>
+    <AssociationSet Name="FK_order_return_orders" Association="GPOSModel.FK_order_return_orders">
+      <End Role="order" EntitySet="orders" />
+      <End Role="order_return" EntitySet="order_return" />
+    </AssociationSet>
+    <AssociationSet Name="FK_order_return_packages_order_return" Association="GPOSModel.FK_order_return_packages_order_return">
+      <End Role="order_return" EntitySet="order_return" />
+      <End Role="order_return_packages" EntitySet="order_return_packages" />
+    </AssociationSet>
+    <AssociationSet Name="FK_order_return_packages_package" Association="GPOSModel.FK_order_return_packages_package">
+      <End Role="package" EntitySet="packages" />
+      <End Role="order_return_packages" EntitySet="order_return_packages" />
+    </AssociationSet>
+    <AssociationSet Name="FK_package_items_package" Association="GPOSModel.FK_package_items_package">
+      <End Role="package" EntitySet="packages" />
+      <End Role="package_items" EntitySet="package_items" />
+    </AssociationSet>
+    <AssociationSet Name="AspNetUserRoles" Association="GPOSModel.AspNetUserRoles">
+      <End Role="AspNetRole" EntitySet="AspNetRoles" />
+      <End Role="AspNetUser" EntitySet="AspNetUsers" />
+    </AssociationSet>
+    <EntitySet Name="user_branch" EntityType="GPOSModel.user_branch" />
+    <AssociationSet Name="FK_user_branch_AspNetUsers" Association="GPOSModel.FK_user_branch_AspNetUsers">
+      <End Role="AspNetUser" EntitySet="AspNetUsers" />
+      <End Role="user_branch" EntitySet="user_branch" />
+    </AssociationSet>
+    <AssociationSet Name="FK_user_branch_branch" Association="GPOSModel.FK_user_branch_branch">
+      <End Role="branch" EntitySet="branches" />
+      <End Role="user_branch" EntitySet="user_branch" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="C__MigrationHistory">
+    <Key>
+      <PropertyRef Name="MigrationId" />
+      <PropertyRef Name="ContextKey" />
+    </Key>
+    <Property Name="MigrationId" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="ContextKey" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="Model" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+    <Property Name="ProductVersion" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="AspNetRole">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetUsers" Relationship="GPOSModel.AspNetUserRoles" FromRole="AspNetRole" ToRole="AspNetUser" />
+  </EntityType>
+  <EntityType Name="AspNetUserClaim">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetUser" Relationship="GPOSModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaim" ToRole="AspNetUser" />
+  </EntityType>
+  <EntityType Name="AspNetUserLogin">
+    <Key>
+      <PropertyRef Name="LoginProvider" />
+      <PropertyRef Name="ProviderKey" />
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="LoginProvider" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="ProviderKey" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetUser" Relationship="GPOSModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogin" ToRole="AspNetUser" />
+  </EntityType>
+  <EntityType Name="AspNetUser">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+    <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+    <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+    <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+    <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetUserClaims" Relationship="GPOSModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUser" ToRole="AspNetUserClaim" />
+    <NavigationProperty Name="AspNetUserLogins" Relationship="GPOSModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUser" ToRole="AspNetUserLogin" />
+    <NavigationProperty Name="order_return" Relationship="GPOSModel.FK_order_return_AspNetUsers" FromRole="AspNetUser" ToRole="order_return" />
+    <NavigationProperty Name="orders" Relationship="GPOSModel.FK_orders_AspNetUsers" FromRole="AspNetUser" ToRole="order" />
+    <NavigationProperty Name="AspNetRoles" Relationship="GPOSModel.AspNetUserRoles" FromRole="AspNetUser" ToRole="AspNetRole" />
+    <NavigationProperty Name="user_branch" Relationship="GPOSModel.FK_user_branch_AspNetUsers" FromRole="AspNetUser" ToRole="user_branch" />
+  </EntityType>
+  <EntityType Name="branch">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="location" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="phone" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="customers" Relationship="GPOSModel.FK_customer_branch" FromRole="branch" ToRole="customer" a:GetterAccess="Internal" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" a:SetterAccess="Public" />
+    <NavigationProperty Name="items" Relationship="GPOSModel.FK_item_branch" FromRole="branch" ToRole="item" a:GetterAccess="Protected" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" a:SetterAccess="Protected" />
+    <NavigationProperty Name="user_branch" Relationship="GPOSModel.FK_user_branch_branch" FromRole="branch" ToRole="user_branch" />
+  </EntityType>
+  <EntityType Name="customer">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="bid" Type="Int32" Nullable="false" />
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="phone" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="balance" Type="Int32" />
+    <Property Name="tag" Type="Boolean" />
+    <NavigationProperty Name="branch" Relationship="GPOSModel.FK_customer_branch" FromRole="customer" ToRole="branch" a:GetterAccess="Protected" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" />
+    <NavigationProperty Name="customer_transection" Relationship="GPOSModel.FK_customer_transection_customer" FromRole="customer" ToRole="customer_transection" a:GetterAccess="Protected" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" />
+    <NavigationProperty Name="orders" Relationship="GPOSModel.FK_orders_customer" FromRole="customer" ToRole="order" a:GetterAccess="Protected" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" />
+    <Property Name="isActive" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="customer_transection">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="cus_id" Type="Int32" Nullable="false" />
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="dt" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="trans_amount" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="customer" Relationship="GPOSModel.FK_customer_transection_customer" FromRole="customer_transection" ToRole="customer" a:GetterAccess="Internal" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" />
+  </EntityType>
+  <EntityType Name="item">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="bid" Type="Int32" Nullable="false" />
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="80" FixedLength="true" Unicode="false" />
+    <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="company" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="qty" Type="Int32" Nullable="false" />
+    <Property Name="retail_price" Type="Int32" Nullable="false" />
+    <Property Name="original_price" Type="Int32" Nullable="false" />
+    <Property Name="discount_price" Type="Int32" Nullable="false" />
+    <Property Name="lastsold" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="tag" Type="Boolean" Nullable="false" />
+    <Property Name="isActive" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="branch" Relationship="GPOSModel.FK_item_branch" FromRole="item" ToRole="branch" a:GetterAccess="Protected" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" a:SetterAccess="Public" />
+    <NavigationProperty Name="order_items" Relationship="GPOSModel.FK_order_items_item" FromRole="item" ToRole="order_items" a:GetterAccess="Protected" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" a:SetterAccess="Public" />
+    <NavigationProperty Name="order_return_items" Relationship="GPOSModel.FK_order_return_items_item" FromRole="item" ToRole="order_return_items" a:GetterAccess="Protected" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" a:SetterAccess="Public" />
+    <NavigationProperty Name="package_items" Relationship="GPOSModel.FK_package_items_item" FromRole="item" ToRole="package_items" a:GetterAccess="Protected" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" a:SetterAccess="Public" />
+    <NavigationProperty Name="purchase_history" Relationship="GPOSModel.FK_purchase_history_item" FromRole="item" ToRole="purchase_history" a:GetterAccess="Protected" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" a:SetterAccess="Public" />
+    <Property Name="Barcode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="order_items">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="oid" Type="Int32" Nullable="false" />
+    <Property Name="item_id" Type="Int32" Nullable="false" />
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="qty" Type="Int32" Nullable="false" />
+    <Property Name="total" Type="Int32" Nullable="false" />
+    <Property Name="profit" Type="Int32" Nullable="false" />
+    <Property Name="disc" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="item" Relationship="GPOSModel.FK_order_items_item" FromRole="order_items" ToRole="item" a:GetterAccess="Public" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" a:SetterAccess="Protected" />
+    <NavigationProperty Name="order" Relationship="GPOSModel.FK_order_items_orders" FromRole="order_items" ToRole="order" a:GetterAccess="Protected" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" />
+  </EntityType>
+  <EntityType Name="order_packages">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="oid" Type="Int32" Nullable="false" />
+    <Property Name="pid" Type="Int32" Nullable="false" />
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="qty" Type="Int32" Nullable="false" />
+    <Property Name="total" Type="Int32" Nullable="false" />
+    <Property Name="profit" Type="Int32" Nullable="false" />
+    <Property Name="disc" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="order" Relationship="GPOSModel.FK_order_packages_orders" FromRole="order_packages" ToRole="order" a:GetterAccess="Protected" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" />
+    <NavigationProperty Name="package" Relationship="GPOSModel.FK_order_packages_package" FromRole="order_packages" ToRole="package" a:GetterAccess="Protected" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" />
+  </EntityType>
+  <EntityType Name="order_return">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="oid" Type="Int32" Nullable="false" />
+    <Property Name="user_id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="dt" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="AspNetUser" Relationship="GPOSModel.FK_order_return_AspNetUsers" FromRole="order_return" ToRole="AspNetUser" a:GetterAccess="Protected" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" />
+    <NavigationProperty Name="order_return_items" Relationship="GPOSModel.FK_order_return_items_order_return" FromRole="order_return" ToRole="order_return_items" a:GetterAccess="Protected" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" />
+    <NavigationProperty Name="order" Relationship="GPOSModel.FK_order_return_orders" FromRole="order_return" ToRole="order" a:GetterAccess="Protected" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" />
+    <NavigationProperty Name="order_return_packages" Relationship="GPOSModel.FK_order_return_packages_order_return" FromRole="order_return" ToRole="order_return_packages" a:GetterAccess="Protected" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" />
+  </EntityType>
+  <EntityType Name="order_return_items">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="orid" Type="Int32" Nullable="false" />
+    <Property Name="item_id" Type="Int32" Nullable="false" />
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="qty" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="item" Relationship="GPOSModel.FK_order_return_items_item" FromRole="order_return_items" ToRole="item" a:GetterAccess="Protected" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" />
+    <NavigationProperty Name="order_return" Relationship="GPOSModel.FK_order_return_items_order_return" FromRole="order_return_items" ToRole="order_return" a:GetterAccess="Protected" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" />
+  </EntityType>
+  <EntityType Name="order_return_packages">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="orid" Type="Int32" Nullable="false" />
+    <Property Name="pid" Type="Int32" Nullable="false" />
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="qty" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="order_return" Relationship="GPOSModel.FK_order_return_packages_order_return" FromRole="order_return_packages" ToRole="order_return" a:GetterAccess="Internal" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" />
+    <NavigationProperty Name="package" Relationship="GPOSModel.FK_order_return_packages_package" FromRole="order_return_packages" ToRole="package" a:GetterAccess="Internal" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" />
+  </EntityType>
+  <EntityType Name="order">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="cus_id" Type="Int32" Nullable="false" />
+    <Property Name="user_id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="dt" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="total_amount" Type="Int32" Nullable="false" />
+    <Property Name="total_profit" Type="Int32" Nullable="false" />
+    <Property Name="disc" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="AspNetUser" Relationship="GPOSModel.FK_orders_AspNetUsers" FromRole="order" ToRole="AspNetUser" a:GetterAccess="Protected" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" />
+    <NavigationProperty Name="customer" Relationship="GPOSModel.FK_orders_customer" FromRole="order" ToRole="customer" a:GetterAccess="Protected" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" />
+    <NavigationProperty Name="order_items" Relationship="GPOSModel.FK_order_items_orders" FromRole="order" ToRole="order_items" a:GetterAccess="Protected" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" />
+    <NavigationProperty Name="order_packages" Relationship="GPOSModel.FK_order_packages_orders" FromRole="order" ToRole="order_packages" a:GetterAccess="Protected" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" />
+    <NavigationProperty Name="order_return" Relationship="GPOSModel.FK_order_return_orders" FromRole="order" ToRole="order_return" a:GetterAccess="Protected" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" />
+    <Property Name="rcv" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="package">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="retail_price" Type="Int32" Nullable="false" />
+    <Property Name="discount_price" Type="Int32" Nullable="false" />
+    <Property Name="isActive" Type="Boolean" Nullable="false" />
+    <Property Name="lastsold" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="order_packages" Relationship="GPOSModel.FK_order_packages_package" FromRole="package" ToRole="order_packages" a:GetterAccess="Protected" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" a:SetterAccess="Public" />
+    <NavigationProperty Name="order_return_packages" Relationship="GPOSModel.FK_order_return_packages_package" FromRole="package" ToRole="order_return_packages" a:GetterAccess="Protected" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" />
+    <NavigationProperty Name="package_items" Relationship="GPOSModel.FK_package_items_package" FromRole="package" ToRole="package_items" a:GetterAccess="Protected" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" />
+    <Property Name="barcode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="tag" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="package_items">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="pid" Type="Int32" Nullable="false" />
+    <Property Name="item_id" Type="Int32" Nullable="false" />
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="item_qty" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="item" Relationship="GPOSModel.FK_package_items_item" FromRole="package_items" ToRole="item" a:GetterAccess="Protected" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" />
+    <NavigationProperty Name="package" Relationship="GPOSModel.FK_package_items_package" FromRole="package_items" ToRole="package" a:GetterAccess="Protected" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" />
+  </EntityType>
+  <EntityType Name="purchase_history">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="item_id" Type="Int32" Nullable="false" />
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="dt" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="qty" Type="Int32" />
+    <Property Name="price" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="item" Relationship="GPOSModel.FK_purchase_history_item" FromRole="purchase_history" ToRole="item" a:GetterAccess="Protected" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" />
+  </EntityType>
+  <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+    <End Type="GPOSModel.AspNetUser" Role="AspNetUser" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="GPOSModel.AspNetUserClaim" Role="AspNetUserClaim" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUser">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserClaim">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+    <End Type="GPOSModel.AspNetUser" Role="AspNetUser" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="GPOSModel.AspNetUserLogin" Role="AspNetUserLogin" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUser">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserLogin">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_order_return_AspNetUsers">
+    <End Type="GPOSModel.AspNetUser" Role="AspNetUser" Multiplicity="1" />
+    <End Type="GPOSModel.order_return" Role="order_return" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUser">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="order_return">
+        <PropertyRef Name="user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_orders_AspNetUsers">
+    <End Type="GPOSModel.AspNetUser" Role="AspNetUser" Multiplicity="1" />
+    <End Type="GPOSModel.order" Role="order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUser">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="order">
+        <PropertyRef Name="user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_customer_branch">
+    <End Type="GPOSModel.branch" Role="branch" Multiplicity="1" />
+    <End Type="GPOSModel.customer" Role="customer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="branch">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="customer">
+        <PropertyRef Name="bid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_item_branch">
+    <End Type="GPOSModel.branch" Role="branch" Multiplicity="1" />
+    <End Type="GPOSModel.item" Role="item" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="branch">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="item">
+        <PropertyRef Name="bid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_customer_transection_customer">
+    <End Type="GPOSModel.customer" Role="customer" Multiplicity="1" />
+    <End Type="GPOSModel.customer_transection" Role="customer_transection" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="customer">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="customer_transection">
+        <PropertyRef Name="cus_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_orders_customer">
+    <End Type="GPOSModel.customer" Role="customer" Multiplicity="1" />
+    <End Type="GPOSModel.order" Role="order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="customer">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="order">
+        <PropertyRef Name="cus_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_order_items_item">
+    <End Type="GPOSModel.item" Role="item" Multiplicity="1" />
+    <End Type="GPOSModel.order_items" Role="order_items" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="item">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="order_items">
+        <PropertyRef Name="item_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_order_return_items_item">
+    <End Type="GPOSModel.item" Role="item" Multiplicity="1" />
+    <End Type="GPOSModel.order_return_items" Role="order_return_items" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="item">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="order_return_items">
+        <PropertyRef Name="item_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_package_items_item">
+    <End Type="GPOSModel.item" Role="item" Multiplicity="1" />
+    <End Type="GPOSModel.package_items" Role="package_items" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="item">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="package_items">
+        <PropertyRef Name="item_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_purchase_history_item">
+    <End Type="GPOSModel.item" Role="item" Multiplicity="1" />
+    <End Type="GPOSModel.purchase_history" Role="purchase_history" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="item">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="purchase_history">
+        <PropertyRef Name="item_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_order_items_orders">
+    <End Type="GPOSModel.order" Role="order" Multiplicity="1" />
+    <End Type="GPOSModel.order_items" Role="order_items" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="order">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="order_items">
+        <PropertyRef Name="oid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_order_packages_orders">
+    <End Type="GPOSModel.order" Role="order" Multiplicity="1" />
+    <End Type="GPOSModel.order_packages" Role="order_packages" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="order">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="order_packages">
+        <PropertyRef Name="oid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_order_packages_package">
+    <End Type="GPOSModel.package" Role="package" Multiplicity="1" />
+    <End Type="GPOSModel.order_packages" Role="order_packages" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="package">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="order_packages">
+        <PropertyRef Name="pid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_order_return_items_order_return">
+    <End Type="GPOSModel.order_return" Role="order_return" Multiplicity="1" />
+    <End Type="GPOSModel.order_return_items" Role="order_return_items" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="order_return">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="order_return_items">
+        <PropertyRef Name="orid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_order_return_orders">
+    <End Type="GPOSModel.order" Role="order" Multiplicity="1" />
+    <End Type="GPOSModel.order_return" Role="order_return" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="order">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="order_return">
+        <PropertyRef Name="oid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_order_return_packages_order_return">
+    <End Type="GPOSModel.order_return" Role="order_return" Multiplicity="1" />
+    <End Type="GPOSModel.order_return_packages" Role="order_return_packages" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="order_return">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="order_return_packages">
+        <PropertyRef Name="orid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_order_return_packages_package">
+    <End Type="GPOSModel.package" Role="package" Multiplicity="1" />
+    <End Type="GPOSModel.order_return_packages" Role="order_return_packages" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="package">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="order_return_packages">
+        <PropertyRef Name="pid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_package_items_package">
+    <End Type="GPOSModel.package" Role="package" Multiplicity="1" />
+    <End Type="GPOSModel.package_items" Role="package_items" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="package">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="package_items">
+        <PropertyRef Name="pid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="AspNetUserRoles">
+    <End Type="GPOSModel.AspNetRole" Role="AspNetRole" Multiplicity="*" />
+    <End Type="GPOSModel.AspNetUser" Role="AspNetUser" Multiplicity="*" />
+  </Association>
+  <EntityType Name="user_branch">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="user_id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="branch_id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="AspNetUser" Relationship="GPOSModel.FK_user_branch_AspNetUsers" FromRole="user_branch" ToRole="AspNetUser" a:GetterAccess="Protected" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" />
+    <NavigationProperty Name="branch" Relationship="GPOSModel.FK_user_branch_branch" FromRole="user_branch" ToRole="branch" a:GetterAccess="Protected" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" />
+  </EntityType>
+  <Association Name="FK_user_branch_AspNetUsers">
+    <End Type="GPOSModel.AspNetUser" Role="AspNetUser" Multiplicity="1" />
+    <End Type="GPOSModel.user_branch" Role="user_branch" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUser">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="user_branch">
+        <PropertyRef Name="user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_user_branch_branch">
+    <End Type="GPOSModel.branch" Role="branch" Multiplicity="1" />
+    <End Type="GPOSModel.user_branch" Role="user_branch" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="branch">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="user_branch">
+        <PropertyRef Name="branch_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

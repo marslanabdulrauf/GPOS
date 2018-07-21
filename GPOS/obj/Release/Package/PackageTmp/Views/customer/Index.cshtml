@@ -1,0 +1,30 @@
+﻿@{
+    ViewBag.Title = "Customer";
+    Layout = "../Shared/_Layout.cshtml";
+}
+<br />
+@(Html.Kendo().Grid<GPOSDAL.customer>()
+    
+        .Name("customers")
+        .Columns(col =>
+        {
+            col.Bound(c => c.name).Title("Name");
+            col.Bound(c => c.address).Title("Address/Shop");
+            col.Bound(c => c.phone).Title("Phone#");
+            col.Bound(c => c.balance).Title("Balance");
+            col.Bound(c => c.tag).Title("Debit/Credit");
+            col.Bound(c => c.isActive).Title("is Active ?");
+        })
+        .DataSource(ds=>ds
+            .Ajax()
+            .PageSize(100)
+            .Model(model => model.Id(c => c.id))
+            .Create(update => update.Action("Create", "customer"))
+            .Read(read => read.Action("Read", "customer"))
+            .Update(update => update.Action("Update", "customer"))
+            .Destroy(update => update.Action("Destroy", "customer"))
+       
+
+        )
+    
+    )
