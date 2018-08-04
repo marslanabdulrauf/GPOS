@@ -210,14 +210,6 @@ function checkout() {
         var rcv = $('#rcv').val(); 
         $.ajax({
             type: "POST",
-            //url: "http://localhost:62546/api/Order/SetOrder?items=" +
-            //    items +
-            //    "&tot=" +
-            //    tot +
-            //    "&dis=" +
-            //    dis +
-            //    "&rcv=" +
-            //rcv,
             url: "http://localhost/GPOS/api/Order/SetOrder?items=" +
                 items +
                 "&tot=" +

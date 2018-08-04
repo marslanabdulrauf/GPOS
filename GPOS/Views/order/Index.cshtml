@@ -16,6 +16,7 @@
           c.Bound(o => o.dt).Title("Date Time").Format("{0:MM/dd/yyyy}").Width(150);
           c.Bound(o => o.total_amount).Title("Total Amount").Width(150)
               .ClientFooterTemplate("Grand Total : #:sum#");
+          c.Command(btn => btn.Custom("Re-Print").Click("ReprintOrder")).Width(120);
       })
       .ToolBar(t=>t.Excel())
       .Pageable()
@@ -73,5 +74,20 @@
 <script>
     function dataBound() {
         this.expandRow(this.tbody.find("tr.k-master-row").first());
+    }
+
+    function ReprintOrder(e) {
+        e.preventDefault();
+        var dataitem = this.dataItem($(e.currentTarget).closest("tr"));
+        $.ajax({
+            type: "POST",
+            url: "http://localhost/GPOS/api/Order/ReprintOrder?id=" + dataitem.id,
+            success: function (res) {
+                alert("Order Re-Printed.!");
+            },
+            error: function (res) {
+                alert("Error Occur! While Printing the Order!");
+            }
+        });
     }
 </script>

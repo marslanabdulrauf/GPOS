@@ -53,15 +53,15 @@ namespace GPOS.Controllers.api
             {
                 try
                 {
-                    PrintOrder po= new PrintOrder();
-                    po.SetParameterValue("OID",ordernumber);
-                    po.SetParameterValue("order",localorder);
-                    po.PrintToPrinter(1,false,0,0);
-                    subPrintOrder spo= new subPrintOrder();
-                    spo.SetParameterValue("o", ordernumber);
-                    spo.SetParameterValue("lo", localorder);
-                    spo.PrintToPrinter(1, false, 0, 0);
-                    localorder++;
+                    //PrintOrder po= new PrintOrder();
+                    //po.SetParameterValue("OID",ordernumber);
+                    //po.SetParameterValue("order",localorder);
+                    //po.PrintToPrinter(1,false,0,0);
+                    //subPrintOrder spo= new subPrintOrder();
+                    //spo.SetParameterValue("o", ordernumber);
+                    //spo.SetParameterValue("lo", localorder);
+                    //spo.PrintToPrinter(1, false, 0, 0);
+                    //localorder++;
                     return Ok();
                 }
                 catch
@@ -151,6 +151,20 @@ namespace GPOS.Controllers.api
                 saveOrderItems(ordernumber);
                 return true;
             }
+        }
+
+        public IHttpActionResult ReprintOrder([FromUri]int id)
+        {
+            return Ok(id);
+            //PrintOrder po= new PrintOrder();
+            //po.SetParameterValue("OID",ordernumber);
+            //po.SetParameterValue("order",localorder);
+            //po.PrintToPrinter(1,false,0,0);
+            //subPrintOrder spo= new subPrintOrder();
+            //spo.SetParameterValue("o", ordernumber);
+            //spo.SetParameterValue("lo", localorder);
+            //spo.PrintToPrinter(1, false, 0, 0);
+            //localorder++;
         }
     }
 }
