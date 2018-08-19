@@ -27,10 +27,12 @@ namespace GPOS.Controllers.api
         private int rcv;
         private int blnc;
         private int ordernumber;
+        private int customer_id;
 
         public IHttpActionResult SetOrder([FromUri] string items, [FromUri] int tot, [FromUri] int dis,
-            [FromUri] int rcv)
+            [FromUri] int rcv, [FromUri] int cus_id)
         {
+            customer_id = cus_id;
             String[] list = items.Split(',');
             ids=new int[list.Length];
             names = new String[list.Length];
@@ -141,7 +143,7 @@ namespace GPOS.Controllers.api
             else
             {
                 order o = new order();
-                o.cus_id = 1;
+                o.cus_id = customer_id;
                 o.user_id = User.Identity.GetUserId();
                 o.total_profit = calProfit();
                 o.total_amount = sale;
@@ -156,7 +158,7 @@ namespace GPOS.Controllers.api
         public IHttpActionResult ReprintOrder([FromUri]int id)
         {
             return Ok(id);
-            //PrintOrder po= new PrintOrder();
+            //PrintOrder po= new PirntOrder();
             //po.SetParameterValue("OID",ordernumber);
             //po.SetParameterValue("order",localorder);
             //po.PrintToPrinter(1,false,0,0);
@@ -165,6 +167,20 @@ namespace GPOS.Controllers.api
             //spo.SetParameterValue("lo", localorder);
             //spo.PrintToPrinter(1, false, 0, 0);
             //localorder++;
+        }
+        public IHttpActionResult createCustomer([FromUri] string customer_name, [FromUri] string customer_phone, [FromUri] string customer_address )
+        {
+            customer ncus = new customer();
+            ncus.name = customer_name;
+            ncus.address = customer_address;
+            ncus.phone = customer_phone;
+            ncus.isActive = true;
+            ncus.tag = true;
+            ncus.bid = 1;
+            int id = new customerModel().Create(ncus);
+            if (id <= 0)
+                return BadRequest("Error adding the Customer");
+            return Ok(id);
         }
     }
 }

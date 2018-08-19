@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="5f2b8257a006417dab026c31b5797896" Name="Diagram1" ZoomLevel="87" >
+      <Diagram DiagramId="5f2b8257a006417dab026c31b5797896" Name="Diagram1" ZoomLevel="81" >
         <EntityTypeShape EntityType="GPOSModel.C__MigrationHistory" Width="1.5" PointX="7.75" PointY="0.75" />
         <EntityTypeShape EntityType="GPOSModel.AspNetRole" Width="1.5" PointX="0.75" PointY="3.875" />
         <EntityTypeShape EntityType="GPOSModel.AspNetUserClaim" Width="1.5" PointX="5.25" PointY="23" />

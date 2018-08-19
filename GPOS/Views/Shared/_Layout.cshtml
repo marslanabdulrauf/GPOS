@@ -39,19 +39,14 @@
               .Items(invchild =>
               {
                   invchild.Add().Text("Stock").Action("Index", "items");
+                  //invchild.Add().Text("Packages").Action("Index", "Package");
               });
-          //item.Add().Text("Cusotmer")
-          //    .Items(cuschild =>
-          //    {
-          //        cuschild.Add().Text("Customers").Action("", "");
-          //        cuschild.Add().Text("Customer Reports").Action("", "");
+          item.Add().Text("Cusotmer")
+              .Items(cuschild =>
+              {
+                  cuschild.Add().Text("Customers").Action("Index", "customer");
 
-          //    });
-          //item.Add().Text("Sale")
-          //    .Items(salechild =>
-          //    {
-          //        salechild.Add().Text("Reports").Action("", "");//reports can goes to children form.
-          //    });
+              });
           if (Request.IsAuthenticated)
           {
               using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new {id = "logoutForm"}))

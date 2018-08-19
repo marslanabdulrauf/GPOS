@@ -9,7 +9,7 @@ namespace GPOS.Models
 {
     public class customerModel : IDisposable
     {
-        private static bool UpdateDatabase = false;
+        private static bool UpdateDatabase = true;
         private GPOSEntities entities = new GPOSEntities();
 
         public IList<customer> GetAll()

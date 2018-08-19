@@ -19,7 +19,7 @@
               .IgnoreCase(true)
               .ClearButton(false)
               .Placeholder("Enter Customer Name")
-              .Template("#=name#")
+              .Template("#=id# | #=name# , #=address# | #=phone#")
               .DataSource(source =>
               {
                   source.Read(read =>
@@ -43,10 +43,10 @@
 
         )
         <br />
-        <label for="customer_balance">Customer Balance</label>
+        <label for="customer_phone">Customer Phone</label>
         @(Html.Kendo().TextBox()
     
-              .Name("customer_balance")
+              .Name("customer_phone")
               .Value("")
               .HtmlAttributes(new {style="width:100%;"})
               )

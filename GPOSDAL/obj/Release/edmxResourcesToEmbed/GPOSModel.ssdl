@@ -1,15 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="GPOSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-  <EntityType Name="__MigrationHistory">
-    <Key>
-      <PropertyRef Name="MigrationId" />
-      <PropertyRef Name="ContextKey" />
-    </Key>
-    <Property Name="MigrationId" Type="nvarchar" MaxLength="150" Nullable="false" />
-    <Property Name="ContextKey" Type="nvarchar" MaxLength="300" Nullable="false" />
-    <Property Name="Model" Type="varbinary(max)" Nullable="false" />
-    <Property Name="ProductVersion" Type="nvarchar" MaxLength="32" Nullable="false" />
-  </EntityType>
   <EntityType Name="AspNetRoles">
     <Key>
       <PropertyRef Name="Id" />
@@ -38,11 +28,11 @@
   </EntityType>
   <EntityType Name="AspNetUserRoles">
     <Key>
-      <PropertyRef Name="UserId" />
-      <PropertyRef Name="RoleId" />
+      <PropertyRef Name="AspNetRoles_Id" />
+      <PropertyRef Name="AspNetUsers_Id" />
     </Key>
-    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
-    <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="AspNetRoles_Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="AspNetUsers_Id" Type="nvarchar" MaxLength="128" Nullable="false" />
   </EntityType>
   <EntityType Name="AspNetUsers">
     <Key>
@@ -61,7 +51,7 @@
     <Property Name="AccessFailedCount" Type="int" Nullable="false" />
     <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
   </EntityType>
-  <EntityType Name="branch">
+  <EntityType Name="branches">
     <Key>
       <PropertyRef Name="id" />
     </Key>
@@ -70,18 +60,15 @@
     <Property Name="location" Type="nvarchar(max)" />
     <Property Name="phone" Type="nvarchar(max)" />
   </EntityType>
-  <EntityType Name="customer">
+  <EntityType Name="C__MigrationHistory">
     <Key>
-      <PropertyRef Name="id" />
+      <PropertyRef Name="MigrationId" />
+      <PropertyRef Name="ContextKey" />
     </Key>
-    <Property Name="bid" Type="int" Nullable="false" />
-    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="name" Type="nvarchar(max)" />
-    <Property Name="address" Type="nvarchar(max)" />
-    <Property Name="phone" Type="nvarchar(max)" />
-    <Property Name="balance" Type="int" />
-    <Property Name="tag" Type="bit" />
-    <Property Name="isActive" Type="bit" />
+    <Property Name="MigrationId" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="ContextKey" Type="nvarchar" MaxLength="300" Nullable="false" />
+    <Property Name="Model" Type="varbinary(max)" Nullable="false" />
+    <Property Name="ProductVersion" Type="nvarchar" MaxLength="32" Nullable="false" />
   </EntityType>
   <EntityType Name="customer_transection">
     <Key>
@@ -92,13 +79,25 @@
     <Property Name="dt" Type="datetime" Nullable="false" />
     <Property Name="trans_amount" Type="int" Nullable="false" />
   </EntityType>
-  <EntityType Name="item">
+  <EntityType Name="customers">
     <Key>
       <PropertyRef Name="id" />
     </Key>
     <Property Name="bid" Type="int" Nullable="false" />
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Barcode" Type="nvarchar(max)" />
+    <Property Name="name" Type="nvarchar(max)" />
+    <Property Name="address" Type="nvarchar(max)" />
+    <Property Name="phone" Type="nvarchar(max)" />
+    <Property Name="balance" Type="int" />
+    <Property Name="tag" Type="bit" />
+    <Property Name="isActive" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="items">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="bid" Type="int" Nullable="false" />
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="name" Type="char" MaxLength="80" Nullable="false" />
     <Property Name="description" Type="nvarchar(max)" />
     <Property Name="company" Type="nvarchar(max)" />
@@ -109,6 +108,7 @@
     <Property Name="lastsold" Type="datetime" Nullable="false" />
     <Property Name="tag" Type="bit" Nullable="false" />
     <Property Name="isActive" Type="bit" Nullable="false" />
+    <Property Name="Barcode" Type="nvarchar(max)" />
   </EntityType>
   <EntityType Name="order_items">
     <Key>
@@ -174,19 +174,6 @@
     <Property Name="disc" Type="int" Nullable="false" />
     <Property Name="rcv" Type="int" Nullable="false" />
   </EntityType>
-  <EntityType Name="package">
-    <Key>
-      <PropertyRef Name="id" />
-    </Key>
-    <Property Name="barcode" Type="nvarchar(max)" />
-    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="name" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="retail_price" Type="int" Nullable="false" />
-    <Property Name="discount_price" Type="int" Nullable="false" />
-    <Property Name="isActive" Type="bit" Nullable="false" />
-    <Property Name="lastsold" Type="datetime" Nullable="false" />
-    <Property Name="tag" Type="bit" Nullable="false" />
-  </EntityType>
   <EntityType Name="package_items">
     <Key>
       <PropertyRef Name="id" />
@@ -195,6 +182,19 @@
     <Property Name="item_id" Type="int" Nullable="false" />
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="item_qty" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="packages">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="retail_price" Type="int" Nullable="false" />
+    <Property Name="discount_price" Type="int" Nullable="false" />
+    <Property Name="isActive" Type="bit" Nullable="false" />
+    <Property Name="lastsold" Type="datetime" Nullable="false" />
+    <Property Name="barcode" Type="nvarchar(max)" />
+    <Property Name="tag" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="purchase_history">
     <Key>
@@ -214,23 +214,47 @@
     <Property Name="user_id" Type="nvarchar" MaxLength="128" Nullable="false" />
     <Property Name="branch_id" Type="int" Nullable="false" />
   </EntityType>
-  <Association Name="FK_customer_branch">
-    <End Role="branch" Type="Self.branch" Multiplicity="1" />
-    <End Role="customer" Type="Self.customer" Multiplicity="*" />
+  <Association Name="FK_AspNetUserRoles_AspNetRole">
+    <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1" />
+    <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="branch">
+      <Principal Role="AspNetRoles">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserRoles">
+        <PropertyRef Name="AspNetRoles_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AspNetUserRoles_AspNetUser">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+    <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserRoles">
+        <PropertyRef Name="AspNetUsers_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_customer_branch">
+    <End Role="branches" Type="Self.branches" Multiplicity="1" />
+    <End Role="customers" Type="Self.customers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="branches">
         <PropertyRef Name="id" />
       </Principal>
-      <Dependent Role="customer">
+      <Dependent Role="customers">
         <PropertyRef Name="bid" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_customer_transection_customer">
-    <End Role="customer" Type="Self.customer" Multiplicity="1" />
+    <End Role="customers" Type="Self.customers" Multiplicity="1" />
     <End Role="customer_transection" Type="Self.customer_transection" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="customer">
+      <Principal Role="customers">
         <PropertyRef Name="id" />
       </Principal>
       <Dependent Role="customer_transection">
@@ -266,39 +290,23 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
-    <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+  <Association Name="FK_item_branch">
+    <End Role="branches" Type="Self.branches" Multiplicity="1" />
+    <End Role="items" Type="Self.items" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="AspNetRoles">
-        <PropertyRef Name="Id" />
+      <Principal Role="branches">
+        <PropertyRef Name="id" />
       </Principal>
-      <Dependent Role="AspNetUserRoles">
-        <PropertyRef Name="RoleId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
-    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="AspNetUsers">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="AspNetUserRoles">
-        <PropertyRef Name="UserId" />
+      <Dependent Role="items">
+        <PropertyRef Name="bid" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_order_items_item">
-    <End Role="item" Type="Self.item" Multiplicity="1" />
+    <End Role="items" Type="Self.items" Multiplicity="1" />
     <End Role="order_items" Type="Self.order_items" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="item">
+      <Principal Role="items">
         <PropertyRef Name="id" />
       </Principal>
       <Dependent Role="order_items">
@@ -331,10 +339,10 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_order_packages_package">
-    <End Role="package" Type="Self.package" Multiplicity="1" />
+    <End Role="packages" Type="Self.packages" Multiplicity="1" />
     <End Role="order_packages" Type="Self.order_packages" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="package">
+      <Principal Role="packages">
         <PropertyRef Name="id" />
       </Principal>
       <Dependent Role="order_packages">
@@ -355,10 +363,10 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_order_return_items_item">
-    <End Role="item" Type="Self.item" Multiplicity="1" />
+    <End Role="items" Type="Self.items" Multiplicity="1" />
     <End Role="order_return_items" Type="Self.order_return_items" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="item">
+      <Principal Role="items">
         <PropertyRef Name="id" />
       </Principal>
       <Dependent Role="order_return_items">
@@ -403,10 +411,10 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_order_return_packages_package">
-    <End Role="package" Type="Self.package" Multiplicity="1" />
+    <End Role="packages" Type="Self.packages" Multiplicity="1" />
     <End Role="order_return_packages" Type="Self.order_return_packages" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="package">
+      <Principal Role="packages">
         <PropertyRef Name="id" />
       </Principal>
       <Dependent Role="order_return_packages">
@@ -427,10 +435,10 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_orders_customer">
-    <End Role="customer" Type="Self.customer" Multiplicity="1" />
+    <End Role="customers" Type="Self.customers" Multiplicity="1" />
     <End Role="orders" Type="Self.orders" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="customer">
+      <Principal Role="customers">
         <PropertyRef Name="id" />
       </Principal>
       <Dependent Role="orders">
@@ -439,10 +447,10 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_package_items_item">
-    <End Role="item" Type="Self.item" Multiplicity="1" />
+    <End Role="items" Type="Self.items" Multiplicity="1" />
     <End Role="package_items" Type="Self.package_items" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="item">
+      <Principal Role="items">
         <PropertyRef Name="id" />
       </Principal>
       <Dependent Role="package_items">
@@ -451,10 +459,10 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_package_items_package">
-    <End Role="package" Type="Self.package" Multiplicity="1" />
+    <End Role="packages" Type="Self.packages" Multiplicity="1" />
     <End Role="package_items" Type="Self.package_items" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="package">
+      <Principal Role="packages">
         <PropertyRef Name="id" />
       </Principal>
       <Dependent Role="package_items">
@@ -463,10 +471,10 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_purchase_history_item">
-    <End Role="item" Type="Self.item" Multiplicity="1" />
+    <End Role="items" Type="Self.items" Multiplicity="1" />
     <End Role="purchase_history" Type="Self.purchase_history" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="item">
+      <Principal Role="items">
         <PropertyRef Name="id" />
       </Principal>
       <Dependent Role="purchase_history">
@@ -487,10 +495,10 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_user_branch_branch">
-    <End Role="branch" Type="Self.branch" Multiplicity="1" />
+    <End Role="branches" Type="Self.branches" Multiplicity="1" />
     <End Role="user_branch" Type="Self.user_branch" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="branch">
+      <Principal Role="branches">
         <PropertyRef Name="id" />
       </Principal>
       <Dependent Role="user_branch">
@@ -499,32 +507,40 @@
     </ReferentialConstraint>
   </Association>
   <EntityContainer Name="GPOSModelStoreContainer">
-    <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="branch" EntityType="Self.branch" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="customer" EntityType="Self.customer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="branches" EntityType="Self.branches" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="C__MigrationHistory" EntityType="Self.C__MigrationHistory" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="customer_transection" EntityType="Self.customer_transection" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="item" EntityType="Self.item" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="customers" EntityType="Self.customers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="items" EntityType="Self.items" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="order_items" EntityType="Self.order_items" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="order_packages" EntityType="Self.order_packages" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="order_return" EntityType="Self.order_return" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="order_return_items" EntityType="Self.order_return_items" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="order_return_packages" EntityType="Self.order_return_packages" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="orders" EntityType="Self.orders" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="package" EntityType="Self.package" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="package_items" EntityType="Self.package_items" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="packages" EntityType="Self.packages" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="purchase_history" EntityType="Self.purchase_history" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="user_branch" EntityType="Self.user_branch" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_AspNetUserRoles_AspNetRole" Association="Self.FK_AspNetUserRoles_AspNetRole">
+      <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+      <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AspNetUserRoles_AspNetUser" Association="Self.FK_AspNetUserRoles_AspNetUser">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+    </AssociationSet>
     <AssociationSet Name="FK_customer_branch" Association="Self.FK_customer_branch">
-      <End Role="branch" EntitySet="branch" />
-      <End Role="customer" EntitySet="customer" />
+      <End Role="branches" EntitySet="branches" />
+      <End Role="customers" EntitySet="customers" />
     </AssociationSet>
     <AssociationSet Name="FK_customer_transection_customer" Association="Self.FK_customer_transection_customer">
-      <End Role="customer" EntitySet="customer" />
+      <End Role="customers" EntitySet="customers" />
       <End Role="customer_transection" EntitySet="customer_transection" />
     </AssociationSet>
     <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
@@ -535,16 +551,12 @@
       <End Role="AspNetUsers" EntitySet="AspNetUsers" />
       <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
     </AssociationSet>
-    <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
-      <End Role="AspNetRoles" EntitySet="AspNetRoles" />
-      <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
-    </AssociationSet>
-    <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
-      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
-      <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+    <AssociationSet Name="FK_item_branch" Association="Self.FK_item_branch">
+      <End Role="branches" EntitySet="branches" />
+      <End Role="items" EntitySet="items" />
     </AssociationSet>
     <AssociationSet Name="FK_order_items_item" Association="Self.FK_order_items_item">
-      <End Role="item" EntitySet="item" />
+      <End Role="items" EntitySet="items" />
       <End Role="order_items" EntitySet="order_items" />
     </AssociationSet>
     <AssociationSet Name="FK_order_items_orders" Association="Self.FK_order_items_orders">
@@ -556,7 +568,7 @@
       <End Role="order_packages" EntitySet="order_packages" />
     </AssociationSet>
     <AssociationSet Name="FK_order_packages_package" Association="Self.FK_order_packages_package">
-      <End Role="package" EntitySet="package" />
+      <End Role="packages" EntitySet="packages" />
       <End Role="order_packages" EntitySet="order_packages" />
     </AssociationSet>
     <AssociationSet Name="FK_order_return_AspNetUsers" Association="Self.FK_order_return_AspNetUsers">
@@ -564,7 +576,7 @@
       <End Role="order_return" EntitySet="order_return" />
     </AssociationSet>
     <AssociationSet Name="FK_order_return_items_item" Association="Self.FK_order_return_items_item">
-      <End Role="item" EntitySet="item" />
+      <End Role="items" EntitySet="items" />
       <End Role="order_return_items" EntitySet="order_return_items" />
     </AssociationSet>
     <AssociationSet Name="FK_order_return_items_order_return" Association="Self.FK_order_return_items_order_return">
@@ -580,7 +592,7 @@
       <End Role="order_return_packages" EntitySet="order_return_packages" />
     </AssociationSet>
     <AssociationSet Name="FK_order_return_packages_package" Association="Self.FK_order_return_packages_package">
-      <End Role="package" EntitySet="package" />
+      <End Role="packages" EntitySet="packages" />
       <End Role="order_return_packages" EntitySet="order_return_packages" />
     </AssociationSet>
     <AssociationSet Name="FK_orders_AspNetUsers" Association="Self.FK_orders_AspNetUsers">
@@ -588,19 +600,19 @@
       <End Role="orders" EntitySet="orders" />
     </AssociationSet>
     <AssociationSet Name="FK_orders_customer" Association="Self.FK_orders_customer">
-      <End Role="customer" EntitySet="customer" />
+      <End Role="customers" EntitySet="customers" />
       <End Role="orders" EntitySet="orders" />
     </AssociationSet>
     <AssociationSet Name="FK_package_items_item" Association="Self.FK_package_items_item">
-      <End Role="item" EntitySet="item" />
+      <End Role="items" EntitySet="items" />
       <End Role="package_items" EntitySet="package_items" />
     </AssociationSet>
     <AssociationSet Name="FK_package_items_package" Association="Self.FK_package_items_package">
-      <End Role="package" EntitySet="package" />
+      <End Role="packages" EntitySet="packages" />
       <End Role="package_items" EntitySet="package_items" />
     </AssociationSet>
     <AssociationSet Name="FK_purchase_history_item" Association="Self.FK_purchase_history_item">
-      <End Role="item" EntitySet="item" />
+      <End Role="items" EntitySet="items" />
       <End Role="purchase_history" EntitySet="purchase_history" />
     </AssociationSet>
     <AssociationSet Name="FK_user_branch_AspNetUsers" Association="Self.FK_user_branch_AspNetUsers">
@@ -608,7 +620,7 @@
       <End Role="user_branch" EntitySet="user_branch" />
     </AssociationSet>
     <AssociationSet Name="FK_user_branch_branch" Association="Self.FK_user_branch_branch">
-      <End Role="branch" EntitySet="branch" />
+      <End Role="branches" EntitySet="branches" />
       <End Role="user_branch" EntitySet="user_branch" />
     </AssociationSet>
   </EntityContainer>

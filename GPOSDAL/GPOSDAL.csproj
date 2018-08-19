@@ -142,6 +142,7 @@
       <LastGenOutput>GPOSModel.Context.cs</LastGenOutput>
       <DependentUpon>GPOSModel.edmx</DependentUpon>
     </Content>
+    <Content Include="GPOSModel.edmx.sql" />
     <Content Include="GPOSModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>GPOSModel.edmx</DependentUpon>

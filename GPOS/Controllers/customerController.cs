@@ -19,14 +19,13 @@ namespace GPOS.Controllers
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult Create([DataSourceRequest] DataSourceRequest request, item product)
+        public ActionResult Create([DataSourceRequest] DataSourceRequest request, customer product)
         {
             if (product != null && ModelState.IsValid)
             {
                 product.bid = 1;
-                product.lastsold = DateTime.Now;
                 product.tag = true;
-                new itemModel().Create(product);
+                new customerModel().Create(product);
             }
 
             return Json(new[] { product }.ToDataSourceResult(request, ModelState));
@@ -38,22 +37,22 @@ namespace GPOS.Controllers
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult Update([DataSourceRequest] DataSourceRequest request, item product)
+        public ActionResult Update([DataSourceRequest] DataSourceRequest request, customer product)
         {
             if (product != null && ModelState.IsValid)
             {
-                new itemModel().Update(product);
+                new customerModel().Update(product);
             }
 
             return Json(new[] { product }.ToDataSourceResult(request, ModelState));
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult Destroy([DataSourceRequest] DataSourceRequest request, item product)
+        public ActionResult Destroy([DataSourceRequest] DataSourceRequest request, customer product)
         {
             if (product != null)
             {
-                new itemModel().Destroy(product);
+                new customerModel().Destroy(product);
             }
 
             return Json(new[] { product }.ToDataSourceResult(request, ModelState));
@@ -62,10 +61,11 @@ namespace GPOS.Controllers
         public JsonResult Filter_Read(string text)
         {
             text = text.ToLower();
-            var products = new itemModel().Read();
+            var products = new customerModel().Read();
             if (!string.IsNullOrEmpty(text))
             {
-                products = products.Where(i => (i.name.ToLower().Contains(text) || i.Barcode.Equals(text)) && i.isActive && i.tag);
+                products = products.Where(i => i.name.ToLower().Contains(text));
+                products = products.Where(i => i.isActive==true);
             }
             return Json(products, JsonRequestBehavior.AllowGet);
         }
