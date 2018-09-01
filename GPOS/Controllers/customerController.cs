@@ -64,8 +64,8 @@ namespace GPOS.Controllers
             var products = new customerModel().Read();
             if (!string.IsNullOrEmpty(text))
             {
-                products = products.Where(i => i.name.ToLower().Contains(text));
-                products = products.Where(i => i.isActive==true);
+                products = products.Where(i =>i.name != null && i.name.ToLower().Contains(text));
+                products = products.Where(i => i.isActive);
             }
             return Json(products, JsonRequestBehavior.AllowGet);
         }

@@ -67,8 +67,7 @@ namespace GPOS.Controllers
             var products = new itemModel().Read();
             if (!string.IsNullOrEmpty(text))
             {
-                products = products.Where(i =>
-                    (i.name.ToLower().Contains(text) || i.Barcode.Equals(text)) && i.isActive && i.tag);
+                products = products.Where(i => (i.Barcode != null && i.Barcode.Equals(text) || i.name.ToLower().Contains(text)) && i.isActive && i.tag);
             }
             else
             {
