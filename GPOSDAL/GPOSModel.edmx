@@ -826,7 +826,7 @@
           </Key>
           <Property Name="bid" Type="Int32" Nullable="false" />
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" a:GetterAccess="Public" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" />
           <Property Name="address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="phone" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="balance" Type="Int32" />
@@ -944,7 +944,7 @@
           <Property Name="total_profit" Type="Int32" Nullable="false" />
           <Property Name="disc" Type="Int32" Nullable="false" />
           <NavigationProperty Name="AspNetUser" Relationship="GPOSModel.FK_orders_AspNetUsers" FromRole="order" ToRole="AspNetUser" a:GetterAccess="Protected" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" />
-          <NavigationProperty Name="customer" Relationship="GPOSModel.FK_orders_customer" FromRole="order" ToRole="customer" a:GetterAccess="Protected" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" />
+          <NavigationProperty Name="customer" Relationship="GPOSModel.FK_orders_customer" FromRole="order" ToRole="customer" a:GetterAccess="Public" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" />
           <NavigationProperty Name="order_items" Relationship="GPOSModel.FK_order_items_orders" FromRole="order" ToRole="order_items" a:GetterAccess="Protected" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" />
           <NavigationProperty Name="order_packages" Relationship="GPOSModel.FK_order_packages_orders" FromRole="order" ToRole="order_packages" a:GetterAccess="Protected" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" />
           <NavigationProperty Name="order_return" Relationship="GPOSModel.FK_order_return_orders" FromRole="order" ToRole="order_return" a:GetterAccess="Protected" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" />

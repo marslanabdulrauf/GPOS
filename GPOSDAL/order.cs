@@ -32,7 +32,7 @@ namespace GPOSDAL
         public int rcv { get; set; }
     
         public virtual AspNetUser AspNetUser { protected get; set; }
-        public virtual customer customer { protected get; set; }
+        public virtual customer customer { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<order_items> order_items { protected get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

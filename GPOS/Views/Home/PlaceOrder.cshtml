@@ -9,7 +9,7 @@
 
 <div class="row">
     <div class="col col-xs-12 col-sm-3 col-md-3 col-lg-3">
-        <h4>dummy Template, actually work and feilds will be generated afterwards.</h4>
+        <label for="customer">Customer Name</label>
         @(Html.Kendo().AutoComplete()
               .Name("customer")
               .DataTextField("name")
@@ -37,7 +37,7 @@
         <label for="customer_shop">Shop Name</label>
         @(Html.Kendo().TextBox()
     
-        .Name("customer_shop")
+        .Name("customer_address")
         .Value("")
         .HtmlAttributes(new {style="width:100%;"})
 

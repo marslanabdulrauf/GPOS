@@ -215,16 +215,16 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\orderController.cs" />
     <Compile Include="CrystalReports\PrintOrder.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
       <DependentUpon>PrintOrder.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
       <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="CrystalReports\subPrintOrder.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
       <DependentUpon>subPrintOrder.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
       <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

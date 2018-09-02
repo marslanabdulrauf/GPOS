@@ -13,6 +13,7 @@
       {
           c.Bound(o => o.id).Title("Receipt #").Width(120)
               .ClientFooterTemplate("Total Count : #:count#");
+          c.Bound(o => o.customer.name).Title("Customer").Width(120);
           c.Bound(o => o.dt).Title("Date Time").Format("{0:MM/dd/yyyy}").Width(150);
           c.Bound(o => o.total_amount).Title("Total Amount").Width(150)
               .ClientFooterTemplate("Grand Total : #:sum#");
@@ -32,10 +33,10 @@
           .Ajax()
           .PageSize(10)
           .Aggregates(ag=> { ag.Add(i => i.id).Count();
-                               ag.Add(i => i.total_amount).Sum();
+              ag.Add(i => i.total_amount).Sum();
           })
           .Read(read=>read.Action("Read","order"))
- 
+
       )
       .Mobile()
       .Navigatable()

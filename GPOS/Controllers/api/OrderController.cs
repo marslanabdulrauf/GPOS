@@ -177,6 +177,7 @@ namespace GPOS.Controllers.api
             ncus.isActive = true;
             ncus.tag = true;
             ncus.bid = 1;
+            ncus.balance = 0;
             int id = new customerModel().Create(ncus);
             if (id <= 0)
                 return BadRequest("Error adding the Customer");
