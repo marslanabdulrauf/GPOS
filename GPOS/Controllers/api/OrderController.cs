@@ -15,7 +15,7 @@ namespace GPOS.Controllers.api
     {
         GPOSEntities db= new GPOSEntities();
 
-        private static int localorder=1;
+        private static int localorder = 1;
         private int sale;
         private int[] ids;
         private String[] names;
@@ -55,15 +55,15 @@ namespace GPOS.Controllers.api
             {
                 try
                 {
-                    //PrintOrder po= new PrintOrder();
-                    //po.SetParameterValue("OID",ordernumber);
-                    //po.SetParameterValue("order",localorder);
-                    //po.PrintToPrinter(1,false,0,0);
-                    //subPrintOrder spo= new subPrintOrder();
+                    PrintOrder po = new PrintOrder();
+                    po.SetParameterValue("OID", ordernumber);
+                    po.SetParameterValue("order", ordernumber);
+                    po.PrintToPrinter(1, false, 0, 0);
+                    //subPrintOrder spo = new subPrintOrder();
                     //spo.SetParameterValue("o", ordernumber);
-                    //spo.SetParameterValue("lo", localorder);
+                    //spo.SetParameterValue("lo", order);
                     //spo.PrintToPrinter(1, false, 0, 0);
-                    //localorder++;
+                    localorder++;
                     return Ok();
                 }
                 catch
@@ -71,8 +71,10 @@ namespace GPOS.Controllers.api
                     return BadRequest("Problem With the printer.");
                 }
             }
-            
-            return BadRequest("Item is Ended. or the quantity is not good entered...");
+            else
+            {
+                return BadRequest("Item is Ended. or the quantity is not good entered...");
+            }
         }
 
         private bool updateItem()
