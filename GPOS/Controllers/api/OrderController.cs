@@ -55,14 +55,10 @@ namespace GPOS.Controllers.api
             {
                 try
                 {
-                    PrintOrder po = new PrintOrder();
+                    ReceiptReport po = new ReceiptReport();
                     po.SetParameterValue("OID", ordernumber);
                     po.SetParameterValue("order", ordernumber);
                     po.PrintToPrinter(1, false, 0, 0);
-                    //subPrintOrder spo = new subPrintOrder();
-                    //spo.SetParameterValue("o", ordernumber);
-                    //spo.SetParameterValue("lo", order);
-                    //spo.PrintToPrinter(1, false, 0, 0);
                     localorder++;
                     return Ok();
                 }
@@ -159,16 +155,11 @@ namespace GPOS.Controllers.api
 
         public IHttpActionResult ReprintOrder([FromUri]int id)
         {
-            return Ok(id);
-            //PrintOrder po= new PirntOrder();
-            //po.SetParameterValue("OID",ordernumber);
-            //po.SetParameterValue("order",localorder);
-            //po.PrintToPrinter(1,false,0,0);
-            //subPrintOrder spo= new subPrintOrder();
-            //spo.SetParameterValue("o", ordernumber);
-            //spo.SetParameterValue("lo", localorder);
-            //spo.PrintToPrinter(1, false, 0, 0);
-            //localorder++;
+            ReceiptReport po = new ReceiptReport();
+            po.SetParameterValue("OID", id);
+            po.SetParameterValue("order", id);
+            po.PrintToPrinter(1, false, 0, 0);
+            return Ok();
         }
         public IHttpActionResult createCustomer([FromUri] string customer_name, [FromUri] string customer_phone, [FromUri] string customer_address )
         {
