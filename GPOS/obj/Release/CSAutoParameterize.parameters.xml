@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="GPOSEntities-Web.config Connection String" description="GPOSEntities Connection String used in web.config by the application to access the database." defaultValue="metadata=res://*/GPOSModel.csdl|res://*/GPOSModel.ssdl|res://*/GPOSModel.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=EDIOT;initial catalog=GPOS;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework&quot;" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="D:\\Ediot's\ Data\\Projects\\Git\ Backuped\\GPOS\\GPOS\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='GPOSEntities']/@connectionString" />
+  </parameter>
+  <parameter name="DefaultConnection-Web.config Connection String" description="DefaultConnection Connection String used in web.config by the application to access the database." defaultValue="Data Source=EDIOT;Initial Catalog=GPOS;Integrated Security=True" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="D:\\Ediot's\ Data\\Projects\\Git\ Backuped\\GPOS\\GPOS\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='DefaultConnection']/@connectionString" />
+  </parameter>
+</parameters>

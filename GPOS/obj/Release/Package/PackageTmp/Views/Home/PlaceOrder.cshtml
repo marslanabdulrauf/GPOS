@@ -1,0 +1,131 @@
+﻿
+
+@{
+    ViewBag.Title = "Order";
+    Layout = "../Shared/_Layout.cshtml";
+}
+<link href="~/Extra/Stylesheets/placeOrder.css" rel="stylesheet" />
+<br /><br />
+
+<div class="row">
+    <div class="col col-xs-12 col-sm-3 col-md-3 col-lg-3">
+        <label for="customer">Customer Name</label>
+        @(Html.Kendo().AutoComplete()
+              .Name("customer")
+              .DataTextField("name")
+              .Filter(FilterType.Contains)
+              .AutoWidth(true)
+              .MinLength(1)
+              .IgnoreCase(true)
+              .ClearButton(false)
+              .Placeholder("Enter Customer Name")
+              .Template("#=id# | #=name# , #=address# | #=phone#")
+              .DataSource(source =>
+              {
+                  source.Read(read =>
+                  {
+                      read.Action("Filter_Read", "customer")
+                          .Data("customer_data");
+                  })
+                      .ServerFiltering(true);
+              })
+              .Events(e => e.Select("setCustomer"))
+              .HtmlAttributes(new {style = "width:100%;"})
+
+              )
+        <br />
+        <label for="customer_shop">Shop Name</label>
+        @(Html.Kendo().TextBox()
+    
+        .Name("customer_address")
+        .Value("")
+        .HtmlAttributes(new {style="width:100%;"})
+
+        )
+        <br />
+        <label for="customer_phone">Customer Phone</label>
+        @(Html.Kendo().TextBox()
+    
+              .Name("customer_phone")
+              .Value("")
+              .HtmlAttributes(new {style="width:100%;"})
+              )
+    </div>
+    <div class="col col-xs-12 col-sm-4 col-md-4 col-lg-4">
+        <div class="k-content">
+            @(Html.Kendo().AutoComplete()
+                  .Name("products")
+                  .DataTextField("name")
+                  .Filter(FilterType.Contains)
+                  .AutoWidth(true)
+                  .MinLength(1)
+                  .IgnoreCase(true)
+                  .ClearButton(false)
+                  .Placeholder("Enter Product Code/Name")
+                  .Template("#=Barcode# , #=id# | #=name# , #=retail_price# | #=qty#")
+                  .DataSource(source =>
+                  {
+                      source.Read(read =>
+                      {
+                          read.Action("Filter_Read", "items")
+                              .Data("Data");
+                      })
+                          .ServerFiltering(true);
+
+                  })
+                  .Events(e => e.Select("getOrder").Close("empty"))
+                  .HtmlAttributes(new {style = "width:100%"})
+
+                  )
+
+        </div>
+
+        <br/><br/>
+        <label for="tot">Total:</label>
+        <input style="width: 100%" class="text-right" type="text" name="tot" id="tot" value="0" readonly/><br/>
+        <label for="dis">Discount:</label>
+        <input class="text-right" style="width: 100%" type="number" name="dis" id="dis" value="0" onblur="reCalBalance()"/><br/>
+        <label for="rcv">Paid:</label>
+        <input class="text-right" style="width: 100%" type="number" name="rcv" id="rcv" onblur="calBalance()"/><br/>
+        <label for="blnce">Balance:</label>
+        <input style="width: 100%" class="text-right" type="text" name="blnce" id="blnce" value="0" readonly/>
+        <br/><br/>
+        <button id="checkout" class="btn btn-lg btn-block btn-warning" onclick="checkout()"><i class="glyphicon glyphicon-shopping-cart"></i> Check Out</button>
+    </div>
+    <div class="col col-xs-12 col-sm-5 col-md-5 col-lg-5">
+        <table id="i_table" class="table table-bordered table-striped table-responsive">
+            <tr>
+                <th>Item id</th>
+                <th>Item Name</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Total</th>
+                <th> Delete </th>
+            </tr>
+        </table>
+    </div>
+</div>
+
+
+<div class="modal fade" id="alertModel" role="dialog">
+    <div class="modal-dialog">
+    
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header" style="padding:35px 50px;">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4><span class="glyphicon glyphicon-warning-sign"></span> Alert</h4>
+            </div>
+            <div class="modal-body" style="padding:40px 50px;">
+                <h2 id="errmsg"></h2>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
+            </div>
+        </div>
+      
+    </div>
+</div> 
+
+
+<script src="~/Extra/Javascripts/placeOrder.js"></script>

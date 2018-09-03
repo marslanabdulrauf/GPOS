@@ -1,0 +1,96 @@
+﻿
+
+@{
+    ViewBag.Title = "Order Management";
+    Layout = "../Shared/_Layout.cshtml";
+}
+
+<br /> <br />
+
+@(Html.Kendo().Grid<GPOSDAL.order>()
+      .Name("grid")
+      .Columns(c =>
+      {
+          c.Bound(o => o.id).Title("Receipt #").Width(120)
+              .ClientFooterTemplate("Total Count : #:count#");
+          c.Bound(o => o.customer.name).Title("Customer").Width(120);
+          c.Bound(o => o.dt).Title("Date Time").Format("{0:MM/dd/yyyy}").Width(150);
+          c.Bound(o => o.total_amount).Title("Total Amount").Width(150)
+              .ClientFooterTemplate("Grand Total : #:sum#");
+          c.Command(btn => btn.Custom("Re-Print").Click("ReprintOrder")).Width(120);
+      })
+      .ToolBar(t=>t.Excel())
+      .ToolBar(t=>t.Pdf())
+      .Pageable()
+      .Groupable()
+      .Filterable()
+      .Sortable()
+      .Excel(e=>e.FileName("Order Report.xlsx").Filterable(true))
+      .Pdf(p=>p.FileName("Order Reports.pdf"))
+      .Scrollable()
+      .Resizable(r=>r.Columns(true))
+      .ClientDetailTemplateId("oitems")
+      .HtmlAttributes(new {style="height:550px;"})
+      .DataSource(ds=>ds
+          .Ajax()
+          .PageSize(10)
+          .Aggregates(ag=> { ag.Add(i => i.id).Count();
+              ag.Add(i => i.total_amount).Sum();
+          })
+          .Read(read=>read.Action("Read","order"))
+
+      )
+      .Mobile()
+      .Navigatable()
+      .Reorderable(builder => builder.Columns(true))
+      .Events(e=>e.DataBound("dataBound")))
+
+<script id="oitems" type="text/kendo-tmpl">
+    @(Html.Kendo().Grid<GPOSDAL.order_items>()
+          .Name("oitems_grid_#=id#")
+          .Columns(c =>
+          {
+              c.Bound(oi => oi.item.name).Title("Item Name").Width(150)
+              .ClientFooterTemplate("Total Count : \\#:count\\#");
+              c.Bound(oi => oi.item.retail_price).Title("Price").Width(130);
+              c.Bound(oi => oi.qty).Title("Quantity").Width(150)
+              .ClientFooterTemplate("Total Items : \\#:sum\\#");
+              c.Bound(oi => oi.total).Title("Total Amount").Width(130)
+              .ClientFooterTemplate("Grand Total : \\#:sum\\#");
+          })
+          .DataSource(ds=>ds
+              .Ajax()
+              .PageSize(5)
+              .Aggregates(ag=> { ag.Add(oi => oi.item.name).Count();
+                                   ag.Add(oi => oi.total).Sum();
+                                   ag.Add(oi => oi.qty).Sum();
+              })
+              .Read(read=>read.Action("order_items_order","order",new {oid="#=id#"}))
+
+          )
+          .Pageable()
+          .Sortable()
+          .ToClientTemplate()
+
+          )
+</script>
+<script>
+    function dataBound() {
+        this.expandRow(this.tbody.find("tr.k-master-row").first());
+    }
+
+    function ReprintOrder(e) {
+        e.preventDefault();
+        var dataitem = this.dataItem($(e.currentTarget).closest("tr"));
+        $.ajax({
+            type: "POST",
+            url: "http://localhost/GPOS/api/Order/ReprintOrder?id=" + dataitem.id,
+            success: function (res) {
+                alert("Order Re-Printed.!");
+            },
+            error: function (res) {
+                alert("Error Occur! While Printing the Order!");
+            }
+        });
+    }
+</script>
