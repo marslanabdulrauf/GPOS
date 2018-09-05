@@ -176,5 +176,30 @@ namespace GPOS.Controllers.api
                 return BadRequest("Error adding the Customer");
             return Ok(id);
         }
+        
+        public IHttpActionResult Return_item([FromUri]int item_id, [FromUri]int qty, [FromUri]int oid)
+        {
+            order o = new orderModel().GetAll().Where(x => x.id == oid).ToList()[0];
+            order_items oi = new order_itemsModel().GetAll().Where(x => x.oid == o.id && x.item_id == item_id).ToList()[0];
+            oi.qty = oi.qty - qty;
+            oi.total = oi.total - oi.item.retail_price * qty;
+            oi.profit = oi.profit - (oi.item.retail_price - oi.item.original_price) * qty;
+            //oi.disc = oi.disc - oi.item.discount_price * qty;
+            new order_itemsModel().Update(oi);
+            o.total_amount = o.total_amount - (oi.item.retail_price * qty);
+            o.total_profit = o.total_profit - (oi.item.retail_price - oi.item.original_price) * qty;
+            new orderModel().Update(o);
+            order_return or = new order_return();
+            or.oid = oid;
+            or.dt = DateTime.Now;
+            or.user_id = User.Identity.GetUserId();
+            int id = new order_returnModel().Create(or);
+            order_return_items ori = new order_return_items();
+            ori.orid = id;
+            ori.item_id = item_id;
+            ori.qty = qty;
+            new order_return_itemModel().Create(ori);
+            return Ok();
+        }
     }
 }

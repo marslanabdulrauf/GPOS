@@ -57,36 +57,36 @@ namespace GPOS.Models
             }
         }
 
-        public void Update(purchase_history product)
+        public void Update(order_items product)
         {
-            //is function ko khud implement krna pare ga requirement k mutabik.
+            if (!UpdateDatabase)
+            {
+                var target = One(e => e.id == product.id);
 
-            //if (!UpdateDatabase)
-            //{
-            //    var target = One(e => e.id == product.id);
+                if (target != null)
+                {
+                    target.item_id = product.item_id;
+                    target.qty = product.qty;
+                    target.total = product.total;
+                    target.profit = product.profit;
+                    target.disc = product.disc;
+                }
+                entities.SaveChanges();
+            }
+            else
+            {
+                var entity = new order_items();
 
-            //    if (target != null)
-            //    {
-            //        target.item_id = product.item_id;
-            //        target.dt = DateTime.Now;
-            //        target.qty = product.qty;
-            //        target.price = product.price;
-            //    }
-            //    entities.SaveChanges();
-            //}
-            //else
-            //{
-            //    var entity = new purchase_history();
+                entity.item_id = product.item_id;
+                entity.qty = product.qty;
+                entity.total = product.total;
+                entity.profit = product.profit;
+                entity.disc = product.disc;
 
-            //    entity.item_id = product.item_id;
-            //    entity.dt = DateTime.Now;
-            //    entity.qty = product.qty;
-            //    entity.price = product.price;
-
-            //    entities.purchase_history.Attach(entity);
-            //    entities.Entry(entity).State = EntityState.Modified;
-            //    entities.SaveChanges();
-            //}
+                entities.order_items.Attach(entity);
+                entities.Entry(entity).State = EntityState.Modified;
+                entities.SaveChanges();
+            }
         }
 
         public void Destroy(purchase_history product)
@@ -118,6 +118,10 @@ namespace GPOS.Models
 
             //    entities.SaveChanges();
             //}
+        }
+        public order_items One(Func<order_items, bool> predicate)
+        {
+            return GetAll().FirstOrDefault(predicate);
         }
 
         public void Dispose()

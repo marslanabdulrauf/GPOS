@@ -57,13 +57,14 @@
               .ClientFooterTemplate("Total Items : \\#:sum\\#");
               c.Bound(oi => oi.total).Title("Total Amount").Width(130)
               .ClientFooterTemplate("Grand Total : \\#:sum\\#");
+              c.Command(btn => btn.Custom("Return Item").Click("return_item")).Width(100);
           })
           .DataSource(ds=>ds
               .Ajax()
               .PageSize(5)
               .Aggregates(ag=> { ag.Add(oi => oi.item.name).Count();
-                                   ag.Add(oi => oi.total).Sum();
-                                   ag.Add(oi => oi.qty).Sum();
+                  ag.Add(oi => oi.total).Sum();
+                  ag.Add(oi => oi.qty).Sum();
               })
               .Read(read=>read.Action("order_items_order","order",new {oid="#=id#"}))
 
@@ -92,5 +93,36 @@
                 alert("Error Occur! While Printing the Order!");
             }
         });
+    }
+
+    function takeQuantity() {
+        do {
+            var selection = parseInt(prompt("Please Enter Quantity To Proceed.", "1"));
+        } while (isNaN(selection) || selection < 1);
+        return selection;
+    }
+
+    function return_item(e) {
+        e.preventDefault();
+        var dataitem = this.dataItem($(e.currentTarget).closest("tr"));
+        var item_id = dataitem.item_id;
+        var prev_qty = dataitem.qty;
+        var new_qty = takeQuantity();
+        if (new_qty > prev_qty) {
+            alert("Quantity is bigger than the orignal one.!")
+        }
+        else {
+            $.ajax({
+                type: "POST",
+                url: "http://localhost/GPOS/api/Order/Return_item?item_id=" + dataitem.item_id + "&qty=" + new_qty + "&oid=" + dataitem.oid,
+                success: function (res) {
+                    alert("Item Returned Successfully!");
+                },
+                error: function (res) {
+                    alert("Error Occur! While Returning the items");
+                }
+            });
+        }
+
     }
 </script>

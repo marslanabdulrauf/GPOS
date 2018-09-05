@@ -242,6 +242,8 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\orderModel.cs" />
     <Compile Include="Models\order_itemsModel.cs" />
+    <Compile Include="Models\order_returnModel.cs" />
+    <Compile Include="Models\order_return_itemModel.cs" />
     <Compile Include="Models\purchase_historyModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
