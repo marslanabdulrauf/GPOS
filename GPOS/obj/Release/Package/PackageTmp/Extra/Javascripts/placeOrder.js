@@ -204,9 +204,35 @@ $(document).ready(function () {
 function checkout() {
     if (items.length === 0) {
         return;
-    } else {
-        if (customer_id == -1 && $('#customer').val() == "") {
+    }
+    else {
+        if (customer_id == -1 && ($('#customer').val() === "" || $('#customer').val() == null)) {
             customer_id = 1;
+            var tot = $('#tot').val();
+            var dis = $('#dis').val();
+            var rcv = $('#rcv').val();
+            $.ajax({
+                type: "POST",
+                url: "http://localhost/GPOS/api/Order/SetOrder?items=" +
+                items +
+                "&tot=" +
+                tot +
+                "&dis=" +
+                dis +
+                "&rcv=" +
+                rcv +
+                "&cus_id=" +
+                customer_id,
+                success: function (res) {
+                    location.reload();
+                },
+                error: function (res) {
+                    document.getElementById('errmsg').innerHTML = res.responseText;
+                    $('#alertModel').modal();
+                    $('#products').data('kendoAutoComplete').focus();
+                    return;
+                }
+            });
         }
         else {
             var cname = $('#customer').val();
@@ -236,7 +262,7 @@ function checkout() {
                             location.reload();
                         },
                         error: function (res) {
-                            document.getElementById('errmsg').innerHTML = res.IncomingMessage;
+                            document.getElementById('errmsg').innerHTML = res.responseText;
                             $('#alertModel').modal();
                             $('#products').data('kendoAutoComplete').focus();
                             return;
@@ -244,7 +270,7 @@ function checkout() {
                     });
                 },
                 error: function (res) {
-                    document.getElementById('errmsg').innerHTML = res.IncomingMessage;
+                    document.getElementById('errmsg').innerHTML = res.responseText;
                     $('#alertModel').modal();
                     $('#products').data('kendoAutoComplete').focus();
                     return;

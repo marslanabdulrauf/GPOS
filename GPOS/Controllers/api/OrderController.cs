@@ -199,6 +199,9 @@ namespace GPOS.Controllers.api
             ori.item_id = item_id;
             ori.qty = qty;
             new order_return_itemModel().Create(ori);
+            item i = new itemModel().GetAll().Where(x => x.id == item_id).ToList()[0];
+            i.qty = i.qty + qty;
+            new itemModel().Update(i);
             return Ok();
         }
     }
