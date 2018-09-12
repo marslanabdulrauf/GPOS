@@ -205,79 +205,88 @@ function checkout() {
     if (items.length === 0) {
         return;
     }
+    try {
+        var rcv_amount = parseInt($('#rcv').data("kendoNumericTextBox").value());
+        var payable = parseInt($('#tot').data("kendoNumericTextBox").value());
+        if (isNaN(rcv_amount) || isNaN(payable) || rcv_amount <= tot){
+            alert("Pay full amount first");
+            return;
+        }
+    }
+    catch{
+        alert("Please Enter Recieved Amount!.")
+        return;
+    }
+    if (customer_id == -1 && ($('#customer').val() === "" || $('#customer').val() == null)) {
+        customer_id = 1;
+        var tot = $('#tot').val();
+        var dis = $('#dis').val();
+        var rcv = $('#rcv').val();
+        $.ajax({
+            type: "POST",
+            url: "http://localhost/GPOS/api/Order/SetOrder?items=" +
+            items +
+            "&tot=" +
+            tot +
+            "&dis=" +
+            dis +
+            "&rcv=" +
+            rcv +
+            "&cus_id=" +
+            customer_id,
+            success: function (res) {
+                location.reload();
+            },
+            error: function (res) {
+                document.getElementById('errmsg').innerHTML = res.responseText;
+                $('#alertModel').modal();
+                $('#products').data('kendoAutoComplete').focus();
+                return;
+            }
+        });
+    }
     else {
-        if (customer_id == -1 && ($('#customer').val() === "" || $('#customer').val() == null)) {
-            customer_id = 1;
-            var tot = $('#tot').val();
-            var dis = $('#dis').val();
-            var rcv = $('#rcv').val();
-            $.ajax({
-                type: "POST",
-                url: "http://localhost/GPOS/api/Order/SetOrder?items=" +
-                items +
-                "&tot=" +
-                tot +
-                "&dis=" +
-                dis +
-                "&rcv=" +
-                rcv +
-                "&cus_id=" +
-                customer_id,
-                success: function (res) {
-                    location.reload();
-                },
-                error: function (res) {
-                    document.getElementById('errmsg').innerHTML = res.responseText;
-                    $('#alertModel').modal();
-                    $('#products').data('kendoAutoComplete').focus();
-                    return;
-                }
-            });
-        }
-        else {
-            var cname = $('#customer').val();
-            var cphone = $('#customer_phone').val();
-            var caddress = $('#customer_address').val();
-            $.ajax({
-                type: "POST",
-                url: "http://localhost/GPOS/api/Order/createCustomer?customer_name=" + cname + "&customer_address=" + caddress + "&customer_phone=" + cphone,
-                success: function (res) {
-                    customer_id = res;
-                    var tot = $('#tot').val();
-                    var dis = $('#dis').val();
-                    var rcv = $('#rcv').val();
-                    $.ajax({
-                        type: "POST",
-                        url: "http://localhost/GPOS/api/Order/SetOrder?items=" +
-                        items +
-                        "&tot=" +
-                        tot +
-                        "&dis=" +
-                        dis +
-                        "&rcv=" +
-                        rcv +
-                        "&cus_id=" +
-                        customer_id,
-                        success: function (res) {
-                            location.reload();
-                        },
-                        error: function (res) {
-                            document.getElementById('errmsg').innerHTML = res.responseText;
-                            $('#alertModel').modal();
-                            $('#products').data('kendoAutoComplete').focus();
-                            return;
-                        }
-                    });
-                },
-                error: function (res) {
-                    document.getElementById('errmsg').innerHTML = res.responseText;
-                    $('#alertModel').modal();
-                    $('#products').data('kendoAutoComplete').focus();
-                    return;
-                }
-            });
-        }
-
+        var cname = $('#customer').val();
+        var cphone = $('#customer_phone').val();
+        var caddress = $('#customer_address').val();
+        $.ajax({
+            type: "POST",
+            url: "http://localhost/GPOS/api/Order/createCustomer?customer_name=" + cname + "&customer_address=" + caddress + "&customer_phone=" + cphone,
+            success: function (res) {
+                customer_id = res;
+                var tot = $('#tot').val();
+                var dis = $('#dis').val();
+                var rcv = $('#rcv').val();
+                $.ajax({
+                    type: "POST",
+                    url: "http://localhost/GPOS/api/Order/SetOrder?items=" +
+                    items +
+                    "&tot=" +
+                    tot +
+                    "&dis=" +
+                    dis +
+                    "&rcv=" +
+                    rcv +
+                    "&cus_id=" +
+                    customer_id,
+                    success: function (res) {
+                        location.reload();
+                    },
+                    error: function (res) {
+                        document.getElementById('errmsg').innerHTML = res.responseText;
+                        $('#alertModel').modal();
+                        $('#products').data('kendoAutoComplete').focus();
+                        return;
+                    }
+                });
+            },
+            error: function (res) {
+                document.getElementById('errmsg').innerHTML = res.responseText;
+                $('#alertModel').modal();
+                $('#products').data('kendoAutoComplete').focus();
+                return;
+            }
+        });
     }
 }
 
