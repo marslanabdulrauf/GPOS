@@ -9,3 +9,14 @@ D:\Ediot's Data\Projects\Git Backuped\GPOS\GPOSDAL\obj\Release\GPOSDAL.csprojRes
 D:\Ediot's Data\Projects\Git Backuped\GPOS\GPOSDAL\obj\Release\GPOSDAL.csproj.CoreCompileInputs.cache
 D:\Ediot's Data\Projects\Git Backuped\GPOS\GPOSDAL\obj\Release\GPOSDAL.dll
 D:\Ediot's Data\Projects\Git Backuped\GPOS\GPOSDAL\obj\Release\GPOSDAL.pdb
+D:\Androidiot\GPOS\GPOSDAL\bin\Release\GPOSDAL.dll.config
+D:\Androidiot\GPOS\GPOSDAL\bin\Release\GPOSDAL.dll
+D:\Androidiot\GPOS\GPOSDAL\bin\Release\GPOSDAL.pdb
+D:\Androidiot\GPOS\GPOSDAL\bin\Release\EntityFramework.dll
+D:\Androidiot\GPOS\GPOSDAL\bin\Release\EntityFramework.SqlServer.dll
+D:\Androidiot\GPOS\GPOSDAL\bin\Release\EntityFramework.xml
+D:\Androidiot\GPOS\GPOSDAL\bin\Release\EntityFramework.SqlServer.xml
+D:\Androidiot\GPOS\GPOSDAL\obj\Release\GPOSDAL.csprojResolveAssemblyReference.cache
+D:\Androidiot\GPOS\GPOSDAL\obj\Release\GPOSDAL.csproj.CoreCompileInputs.cache
+D:\Androidiot\GPOS\GPOSDAL\obj\Release\GPOSDAL.dll
+D:\Androidiot\GPOS\GPOSDAL\obj\Release\GPOSDAL.pdb

@@ -57,7 +57,6 @@ namespace GPOS.Controllers.api
                 {
                     ReceiptReport po = new ReceiptReport();
                     po.SetParameterValue("OID", ordernumber);
-                    po.SetParameterValue("order", ordernumber);
                     po.PrintToPrinter(1, false, 0, 0);
                     localorder++;
                     return Ok();
@@ -157,7 +156,6 @@ namespace GPOS.Controllers.api
         {
             ReceiptReport po = new ReceiptReport();
             po.SetParameterValue("OID", id);
-            po.SetParameterValue("order", id);
             po.PrintToPrinter(1, false, 0, 0);
             return Ok();
         }
