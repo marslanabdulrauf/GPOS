@@ -208,13 +208,12 @@ function checkout() {
     try {
         var rcv_amount = parseInt($('#rcv').data("kendoNumericTextBox").value());
         var payable = parseInt($('#tot').data("kendoNumericTextBox").value());
-        if (isNaN(rcv_amount) || isNaN(payable) || rcv_amount <= tot){
+        if (isNaN(rcv_amount) || isNaN(payable) || rcv_amount <= tot) {
             alert("Pay full amount first");
             return;
         }
-    }
-    catch{
-        alert("Please Enter Recieved Amount!.")
+    } catch (e)
+    {
         return;
     }
     if (customer_id == -1 && ($('#customer').val() === "" || $('#customer').val() == null)) {
@@ -300,7 +299,7 @@ function customer_data() {
 
 function setCustomer(e) {
     var customer = this.dataItem(e.item.index());
-    $("#customer_shop").val(customer.address);
+    $("#customer_address").val(customer.address);
     $("#customer_phone").val(customer.phone);
     customer_id = customer.id;
     $('#products').data('kendoAutoComplete').focus();
