@@ -41,3 +41,4 @@ D:\Androidiot\GPOS\GPOSDAL\bin\Debug\EntityFramework.SqlServer.xml
 D:\Androidiot\GPOS\GPOSDAL\obj\Debug\GPOSDAL.csproj.CoreCompileInputs.cache
 D:\Androidiot\GPOS\GPOSDAL\obj\Debug\GPOSDAL.dll
 D:\Androidiot\GPOS\GPOSDAL\obj\Debug\GPOSDAL.pdb
+D:\Androidiot\GPOS\GPOSDAL\obj\Debug\GPOSDAL.csprojResolveAssemblyReference.cache

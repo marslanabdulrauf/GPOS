@@ -212,8 +212,9 @@ function checkout() {
             alert("Pay full amount first");
             return;
         }
-    } finally {
-        
+    } catch (e)
+    {
+        return;
     }
     if (customer_id == -1 && ($('#customer').val() === "" || $('#customer').val() == null)) {
         customer_id = 1;
@@ -222,7 +223,7 @@ function checkout() {
         var rcv = $('#rcv').val();
         $.ajax({
             type: "POST",
-            url: "http://localhost/GPOS/api/Order/SetOrder?items=" +
+            url: "http://localhost:62546/api/Order/SetOrder?items=" +
             items +
             "&tot=" +
             tot +
@@ -249,7 +250,7 @@ function checkout() {
         var caddress = $('#customer_address').val();
         $.ajax({
             type: "POST",
-            url: "http://localhost/GPOS/api/Order/createCustomer?customer_name=" + cname + "&customer_address=" + caddress + "&customer_phone=" + cphone,
+            url: "http://localhost:62546/api/Order/createCustomer?customer_name=" + cname + "&customer_address=" + caddress + "&customer_phone=" + cphone,
             success: function (res) {
                 customer_id = res;
                 var tot = $('#tot').val();
@@ -257,7 +258,7 @@ function checkout() {
                 var rcv = $('#rcv').val();
                 $.ajax({
                     type: "POST",
-                    url: "http://localhost/GPOS/api/Order/SetOrder?items=" +
+                    url: "http://localhost:62546/api/Order/SetOrder?items=" +
                     items +
                     "&tot=" +
                     tot +

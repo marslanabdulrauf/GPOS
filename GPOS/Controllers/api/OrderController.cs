@@ -14,16 +14,13 @@ namespace GPOS.Controllers.api
     public class OrderController : ApiController
     {
         GPOSEntities db= new GPOSEntities();
-
-        private static int localorder = 1;
+        
         private int sale;
         private int[] ids;
         private String[] names;
         private int[] unit;
         private int[] qnty;
         private int[] total;
-        private int totalDisocount = 0;
-        private int totalamount = 0;
         private int rcv;
         private int blnc;
         private int ordernumber;
@@ -58,7 +55,6 @@ namespace GPOS.Controllers.api
                     ReceiptReport po = new ReceiptReport();
                     po.SetParameterValue("OID", ordernumber);
                     po.PrintToPrinter(1, false, 0, 0);
-                    localorder++;
                     return Ok();
                 }
                 catch
