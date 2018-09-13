@@ -826,7 +826,7 @@
           </Key>
           <Property Name="bid" Type="Int32" Nullable="false" />
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" a:GetterAccess="Public" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" />
+          <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" a:GetterAccess="Public" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" Nullable="false" />
           <Property Name="address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="phone" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="balance" Type="Int32" />

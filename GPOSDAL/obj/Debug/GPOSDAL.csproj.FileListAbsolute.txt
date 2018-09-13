@@ -31,3 +31,13 @@ D:\Ediot's Data\Projects\Git Backuped\GPOS\GPOSDAL\obj\Debug\GPOSDAL.csprojResol
 D:\Ediot's Data\Projects\Git Backuped\GPOS\GPOSDAL\obj\Debug\GPOSDAL.csproj.CoreCompileInputs.cache
 D:\Ediot's Data\Projects\Git Backuped\GPOS\GPOSDAL\obj\Debug\GPOSDAL.dll
 D:\Ediot's Data\Projects\Git Backuped\GPOS\GPOSDAL\obj\Debug\GPOSDAL.pdb
+D:\Androidiot\GPOS\GPOSDAL\bin\Debug\GPOSDAL.dll.config
+D:\Androidiot\GPOS\GPOSDAL\bin\Debug\GPOSDAL.dll
+D:\Androidiot\GPOS\GPOSDAL\bin\Debug\GPOSDAL.pdb
+D:\Androidiot\GPOS\GPOSDAL\bin\Debug\EntityFramework.dll
+D:\Androidiot\GPOS\GPOSDAL\bin\Debug\EntityFramework.SqlServer.dll
+D:\Androidiot\GPOS\GPOSDAL\bin\Debug\EntityFramework.xml
+D:\Androidiot\GPOS\GPOSDAL\bin\Debug\EntityFramework.SqlServer.xml
+D:\Androidiot\GPOS\GPOSDAL\obj\Debug\GPOSDAL.csproj.CoreCompileInputs.cache
+D:\Androidiot\GPOS\GPOSDAL\obj\Debug\GPOSDAL.dll
+D:\Androidiot\GPOS\GPOSDAL\obj\Debug\GPOSDAL.pdb

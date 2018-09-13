@@ -2,234 +2,234 @@
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="GPOSModelStoreContainer" CdmEntityContainer="GPOSEntities">
     <EntitySetMapping Name="C__MigrationHistory">
-      <EntityTypeMapping TypeName="GPOSModel.C__MigrationHistory">
-        <MappingFragment StoreEntitySet="__MigrationHistory">
-          <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
-          <ScalarProperty Name="Model" ColumnName="Model" />
-          <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
+      <EntityTypeMapping TypeName="IsTypeOf(GPOSModel.C__MigrationHistory)">
+        <MappingFragment StoreEntitySet="C__MigrationHistory">
           <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
+          <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
+          <ScalarProperty Name="Model" ColumnName="Model" />
+          <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="AspNetRoles">
-      <EntityTypeMapping TypeName="GPOSModel.AspNetRole">
+      <EntityTypeMapping TypeName="IsTypeOf(GPOSModel.AspNetRole)">
         <MappingFragment StoreEntitySet="AspNetRoles">
-          <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="AspNetUserClaims">
-      <EntityTypeMapping TypeName="GPOSModel.AspNetUserClaim">
+      <EntityTypeMapping TypeName="IsTypeOf(GPOSModel.AspNetUserClaim)">
         <MappingFragment StoreEntitySet="AspNetUserClaims">
-          <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
-          <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
-          <ScalarProperty Name="UserId" ColumnName="UserId" />
           <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+          <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="AspNetUserLogins">
-      <EntityTypeMapping TypeName="GPOSModel.AspNetUserLogin">
+      <EntityTypeMapping TypeName="IsTypeOf(GPOSModel.AspNetUserLogin)">
         <MappingFragment StoreEntitySet="AspNetUserLogins">
-          <ScalarProperty Name="UserId" ColumnName="UserId" />
-          <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
           <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+          <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="AspNetUsers">
-      <EntityTypeMapping TypeName="GPOSModel.AspNetUser">
+      <EntityTypeMapping TypeName="IsTypeOf(GPOSModel.AspNetUser)">
         <MappingFragment StoreEntitySet="AspNetUsers">
-          <ScalarProperty Name="UserName" ColumnName="UserName" />
-          <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
-          <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
-          <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
-          <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
-          <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
-          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
-          <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
-          <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
-          <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
-          <ScalarProperty Name="Email" ColumnName="Email" />
           <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+          <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+          <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+          <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+          <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+          <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+          <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="branches">
-      <EntityTypeMapping TypeName="GPOSModel.branch">
-        <MappingFragment StoreEntitySet="branch">
-          <ScalarProperty Name="phone" ColumnName="phone" />
-          <ScalarProperty Name="location" ColumnName="location" />
-          <ScalarProperty Name="name" ColumnName="name" />
+      <EntityTypeMapping TypeName="IsTypeOf(GPOSModel.branch)">
+        <MappingFragment StoreEntitySet="branches">
           <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="location" ColumnName="location" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="customers">
-      <EntityTypeMapping TypeName="GPOSModel.customer">
-        <MappingFragment StoreEntitySet="customer">
-          <ScalarProperty Name="isActive" ColumnName="isActive" />
-          <ScalarProperty Name="tag" ColumnName="tag" />
-          <ScalarProperty Name="balance" ColumnName="balance" />
-          <ScalarProperty Name="phone" ColumnName="phone" />
-          <ScalarProperty Name="address" ColumnName="address" />
-          <ScalarProperty Name="name" ColumnName="name" />
+      <EntityTypeMapping TypeName="IsTypeOf(GPOSModel.customer)">
+        <MappingFragment StoreEntitySet="customers">
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="bid" ColumnName="bid" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="balance" ColumnName="balance" />
+          <ScalarProperty Name="tag" ColumnName="tag" />
+          <ScalarProperty Name="isActive" ColumnName="isActive" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="customer_transection">
-      <EntityTypeMapping TypeName="GPOSModel.customer_transection">
+      <EntityTypeMapping TypeName="IsTypeOf(GPOSModel.customer_transection)">
         <MappingFragment StoreEntitySet="customer_transection">
-          <ScalarProperty Name="trans_amount" ColumnName="trans_amount" />
-          <ScalarProperty Name="dt" ColumnName="dt" />
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="cus_id" ColumnName="cus_id" />
+          <ScalarProperty Name="dt" ColumnName="dt" />
+          <ScalarProperty Name="trans_amount" ColumnName="trans_amount" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="items">
-      <EntityTypeMapping TypeName="GPOSModel.item">
-        <MappingFragment StoreEntitySet="item">
-          <ScalarProperty Name="Barcode" ColumnName="Barcode" />
-          <ScalarProperty Name="isActive" ColumnName="isActive" />
-          <ScalarProperty Name="tag" ColumnName="tag" />
-          <ScalarProperty Name="lastsold" ColumnName="lastsold" />
-          <ScalarProperty Name="discount_price" ColumnName="discount_price" />
-          <ScalarProperty Name="original_price" ColumnName="original_price" />
-          <ScalarProperty Name="retail_price" ColumnName="retail_price" />
-          <ScalarProperty Name="qty" ColumnName="qty" />
-          <ScalarProperty Name="company" ColumnName="company" />
-          <ScalarProperty Name="description" ColumnName="description" />
-          <ScalarProperty Name="name" ColumnName="name" />
+      <EntityTypeMapping TypeName="IsTypeOf(GPOSModel.item)">
+        <MappingFragment StoreEntitySet="items">
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="bid" ColumnName="bid" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="company" ColumnName="company" />
+          <ScalarProperty Name="qty" ColumnName="qty" />
+          <ScalarProperty Name="retail_price" ColumnName="retail_price" />
+          <ScalarProperty Name="original_price" ColumnName="original_price" />
+          <ScalarProperty Name="discount_price" ColumnName="discount_price" />
+          <ScalarProperty Name="lastsold" ColumnName="lastsold" />
+          <ScalarProperty Name="tag" ColumnName="tag" />
+          <ScalarProperty Name="isActive" ColumnName="isActive" />
+          <ScalarProperty Name="Barcode" ColumnName="Barcode" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="order_items">
-      <EntityTypeMapping TypeName="GPOSModel.order_items">
+      <EntityTypeMapping TypeName="IsTypeOf(GPOSModel.order_items)">
         <MappingFragment StoreEntitySet="order_items">
-          <ScalarProperty Name="disc" ColumnName="disc" />
-          <ScalarProperty Name="profit" ColumnName="profit" />
-          <ScalarProperty Name="total" ColumnName="total" />
-          <ScalarProperty Name="qty" ColumnName="qty" />
           <ScalarProperty Name="id" ColumnName="id" />
-          <ScalarProperty Name="item_id" ColumnName="item_id" />
           <ScalarProperty Name="oid" ColumnName="oid" />
+          <ScalarProperty Name="item_id" ColumnName="item_id" />
+          <ScalarProperty Name="qty" ColumnName="qty" />
+          <ScalarProperty Name="total" ColumnName="total" />
+          <ScalarProperty Name="profit" ColumnName="profit" />
+          <ScalarProperty Name="disc" ColumnName="disc" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="order_packages">
-      <EntityTypeMapping TypeName="GPOSModel.order_packages">
+      <EntityTypeMapping TypeName="IsTypeOf(GPOSModel.order_packages)">
         <MappingFragment StoreEntitySet="order_packages">
-          <ScalarProperty Name="disc" ColumnName="disc" />
-          <ScalarProperty Name="profit" ColumnName="profit" />
-          <ScalarProperty Name="total" ColumnName="total" />
-          <ScalarProperty Name="qty" ColumnName="qty" />
           <ScalarProperty Name="id" ColumnName="id" />
-          <ScalarProperty Name="pid" ColumnName="pid" />
           <ScalarProperty Name="oid" ColumnName="oid" />
+          <ScalarProperty Name="pid" ColumnName="pid" />
+          <ScalarProperty Name="qty" ColumnName="qty" />
+          <ScalarProperty Name="total" ColumnName="total" />
+          <ScalarProperty Name="profit" ColumnName="profit" />
+          <ScalarProperty Name="disc" ColumnName="disc" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="order_return">
-      <EntityTypeMapping TypeName="GPOSModel.order_return">
+      <EntityTypeMapping TypeName="IsTypeOf(GPOSModel.order_return)">
         <MappingFragment StoreEntitySet="order_return">
-          <ScalarProperty Name="dt" ColumnName="dt" />
           <ScalarProperty Name="id" ColumnName="id" />
-          <ScalarProperty Name="user_id" ColumnName="user_id" />
           <ScalarProperty Name="oid" ColumnName="oid" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="dt" ColumnName="dt" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="order_return_items">
-      <EntityTypeMapping TypeName="GPOSModel.order_return_items">
+      <EntityTypeMapping TypeName="IsTypeOf(GPOSModel.order_return_items)">
         <MappingFragment StoreEntitySet="order_return_items">
-          <ScalarProperty Name="qty" ColumnName="qty" />
           <ScalarProperty Name="id" ColumnName="id" />
-          <ScalarProperty Name="item_id" ColumnName="item_id" />
           <ScalarProperty Name="orid" ColumnName="orid" />
+          <ScalarProperty Name="item_id" ColumnName="item_id" />
+          <ScalarProperty Name="qty" ColumnName="qty" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="order_return_packages">
-      <EntityTypeMapping TypeName="GPOSModel.order_return_packages">
+      <EntityTypeMapping TypeName="IsTypeOf(GPOSModel.order_return_packages)">
         <MappingFragment StoreEntitySet="order_return_packages">
-          <ScalarProperty Name="qty" ColumnName="qty" />
           <ScalarProperty Name="id" ColumnName="id" />
-          <ScalarProperty Name="pid" ColumnName="pid" />
           <ScalarProperty Name="orid" ColumnName="orid" />
+          <ScalarProperty Name="pid" ColumnName="pid" />
+          <ScalarProperty Name="qty" ColumnName="qty" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="orders">
-      <EntityTypeMapping TypeName="GPOSModel.order">
+      <EntityTypeMapping TypeName="IsTypeOf(GPOSModel.order)">
         <MappingFragment StoreEntitySet="orders">
-          <ScalarProperty Name="rcv" ColumnName="rcv" />
-          <ScalarProperty Name="disc" ColumnName="disc" />
-          <ScalarProperty Name="total_profit" ColumnName="total_profit" />
-          <ScalarProperty Name="total_amount" ColumnName="total_amount" />
-          <ScalarProperty Name="dt" ColumnName="dt" />
           <ScalarProperty Name="id" ColumnName="id" />
-          <ScalarProperty Name="user_id" ColumnName="user_id" />
           <ScalarProperty Name="cus_id" ColumnName="cus_id" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="dt" ColumnName="dt" />
+          <ScalarProperty Name="total_amount" ColumnName="total_amount" />
+          <ScalarProperty Name="total_profit" ColumnName="total_profit" />
+          <ScalarProperty Name="disc" ColumnName="disc" />
+          <ScalarProperty Name="rcv" ColumnName="rcv" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="packages">
-      <EntityTypeMapping TypeName="GPOSModel.package">
-        <MappingFragment StoreEntitySet="package">
-          <ScalarProperty Name="tag" ColumnName="tag" />
-          <ScalarProperty Name="barcode" ColumnName="barcode" />
-          <ScalarProperty Name="lastsold" ColumnName="lastsold" />
-          <ScalarProperty Name="isActive" ColumnName="isActive" />
-          <ScalarProperty Name="discount_price" ColumnName="discount_price" />
-          <ScalarProperty Name="retail_price" ColumnName="retail_price" />
-          <ScalarProperty Name="name" ColumnName="name" />
+      <EntityTypeMapping TypeName="IsTypeOf(GPOSModel.package)">
+        <MappingFragment StoreEntitySet="packages">
           <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="retail_price" ColumnName="retail_price" />
+          <ScalarProperty Name="discount_price" ColumnName="discount_price" />
+          <ScalarProperty Name="isActive" ColumnName="isActive" />
+          <ScalarProperty Name="lastsold" ColumnName="lastsold" />
+          <ScalarProperty Name="barcode" ColumnName="barcode" />
+          <ScalarProperty Name="tag" ColumnName="tag" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="package_items">
-      <EntityTypeMapping TypeName="GPOSModel.package_items">
+      <EntityTypeMapping TypeName="IsTypeOf(GPOSModel.package_items)">
         <MappingFragment StoreEntitySet="package_items">
-          <ScalarProperty Name="item_qty" ColumnName="item_qty" />
           <ScalarProperty Name="id" ColumnName="id" />
-          <ScalarProperty Name="item_id" ColumnName="item_id" />
           <ScalarProperty Name="pid" ColumnName="pid" />
+          <ScalarProperty Name="item_id" ColumnName="item_id" />
+          <ScalarProperty Name="item_qty" ColumnName="item_qty" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="purchase_history">
-      <EntityTypeMapping TypeName="GPOSModel.purchase_history">
+      <EntityTypeMapping TypeName="IsTypeOf(GPOSModel.purchase_history)">
         <MappingFragment StoreEntitySet="purchase_history">
-          <ScalarProperty Name="price" ColumnName="price" />
-          <ScalarProperty Name="qty" ColumnName="qty" />
-          <ScalarProperty Name="dt" ColumnName="dt" />
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="item_id" ColumnName="item_id" />
+          <ScalarProperty Name="dt" ColumnName="dt" />
+          <ScalarProperty Name="qty" ColumnName="qty" />
+          <ScalarProperty Name="price" ColumnName="price" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="user_branch">
+      <EntityTypeMapping TypeName="IsTypeOf(GPOSModel.user_branch)">
+        <MappingFragment StoreEntitySet="user_branch">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="branch_id" ColumnName="branch_id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <AssociationSetMapping Name="AspNetUserRoles" TypeName="GPOSModel.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
-      <EndProperty Name="AspNetUser">
-        <ScalarProperty Name="Id" ColumnName="UserId" />
-      </EndProperty>
       <EndProperty Name="AspNetRole">
-        <ScalarProperty Name="Id" ColumnName="RoleId" />
+        <ScalarProperty Name="Id" ColumnName="AspNetRoles_Id" />
+      </EndProperty>
+      <EndProperty Name="AspNetUser">
+        <ScalarProperty Name="Id" ColumnName="AspNetUsers_Id" />
       </EndProperty>
     </AssociationSetMapping>
-    <EntitySetMapping Name="user_branch">
-      <EntityTypeMapping TypeName="GPOSModel.user_branch">
-        <MappingFragment StoreEntitySet="user_branch">
-          <ScalarProperty Name="branch_id" ColumnName="branch_id" />
-          <ScalarProperty Name="user_id" ColumnName="user_id" />
-          <ScalarProperty Name="id" ColumnName="id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

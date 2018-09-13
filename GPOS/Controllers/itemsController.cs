@@ -71,7 +71,7 @@ namespace GPOS.Controllers
             }
             else
             {
-                products = products.Where(i => i.Barcode.Contains("-1"));
+                products = products.Where(i => i.Barcode == "-1");
             }
             return Json(products, JsonRequestBehavior.AllowGet);
         }
