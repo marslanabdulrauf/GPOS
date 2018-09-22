@@ -1987,6 +1987,7 @@
     <Content Include="Views\Home\PlaceOrder.cshtml" />
     <Content Include="Views\order\Index.cshtml" />
     <Content Include="Views\customer\Index.cshtml" />
+    <Content Include="Views\items\Enter_New_Stock.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

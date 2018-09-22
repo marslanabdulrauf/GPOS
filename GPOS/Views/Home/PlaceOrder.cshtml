@@ -53,30 +53,30 @@
     </div>
     <div class="col col-xs-12 col-sm-4 col-md-4 col-lg-4">
         <div class="k-content">
-            @(Html.Kendo().AutoComplete()
-                  .Name("products")
-                  .DataTextField("name")
-                  .Filter(FilterType.Contains)
-                  .AutoWidth(true)
-                  .MinLength(1)
-                  .IgnoreCase(true)
-                  .ClearButton(false)
-                  .Placeholder("Enter Product Code/Name")
-                  .Template("#=Barcode# , #=id# | #=name# , #=retail_price# | #=qty#")
-                  .DataSource(source =>
-                  {
-                      source.Read(read =>
+                @(Html.Kendo().AutoComplete()
+                      .Name("products")
+                      .DataTextField("name")
+                      .Filter(FilterType.Contains)
+                      .AutoWidth(true)
+                      .MinLength(1)
+                      .IgnoreCase(true)
+                      .ClearButton(false)
+                      .Placeholder("Enter Product Code/Name")
+                      .Template("#=Barcode# , #=id# | #=name# , #=retail_price# | #=qty#")
+                      .DataSource(source =>
                       {
-                          read.Action("Filter_Read", "items")
-                              .Data("Data");
+                          source.Read(read =>
+                          {
+                              read.Action("Filter_Read", "items")
+                                  .Data("Data");
+                          })
+                              .ServerFiltering(true);
+
                       })
-                          .ServerFiltering(true);
+                      .Events(e => e.Select("getOrder").Close("empty"))
+                      .HtmlAttributes(new {style = "width:100%"})
 
-                  })
-                  .Events(e => e.Select("getOrder").Close("empty"))
-                  .HtmlAttributes(new {style = "width:100%"})
-
-                  )
+                      )
 
         </div>
 

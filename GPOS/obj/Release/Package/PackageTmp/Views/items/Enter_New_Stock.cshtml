@@ -1,0 +1,92 @@
+﻿
+@{
+    ViewBag.Title = "Enter_New_Stock";
+}
+<br />
+<h2>New Stock Entry</h2>
+<br /><br />
+<div class="row">
+    <div class="col-lg-4 col-md-4">
+        <div class="k-content">
+            @(Html.Kendo().AutoComplete()
+                        .Name("products")
+                        .DataTextField("name")
+                        .Filter(FilterType.Contains)
+                        .AutoWidth(true)
+                        .MinLength(1)
+                        .IgnoreCase(true)
+                        .ClearButton(false)
+                        .Placeholder("Enter Product Code/Name")
+                        .Template("#=Barcode# , #=id# | #=name# , #=retail_price# | #=qty#")
+                        .DataSource(source =>
+                        {
+                            source.Read(read =>
+                            {
+                                read.Action("Filter_Read", "items")
+                                    .Data("Data");
+                            })
+                                .ServerFiltering(true);
+
+                        })
+                        .Events(e => e.Select("setData"))
+                        .HtmlAttributes(new { style = "width:100%" })
+
+            )
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-3">
+        <label for="retail_price">Retail Price:</label>
+        <input type="number" name="retial_price" id="retail_price" min="0" value="" />
+    </div>
+    <div class="col-lg-3 col-md-3">
+        <label for="retail_price">New QTY : </label>
+        <input type="number" name="new_qty" id="new_qty" min="0" value=""/>
+    </div>
+    <div class="col-lg-2 col-md-2">
+        <button type="submit" class="btn btn-default btn-primary" onclick="submit()">Submit</button>
+    </div>
+    <input type="hidden" name="item_id" id="item_id" value="" />
+</div>
+
+<script>
+    $(document).ready(function () {
+        $('#products').focus();
+    })
+    function Data() {
+        return {
+            text: $('#products').val().trim()
+        };
+    }
+    function setData(e) {
+        var dataitem = this.dataItem(e.item.index());
+        $('#retail_price').val(dataitem.retail_price);
+        $('#item_id').val(dataitem.id);
+        $('#retail_price').focus();
+    }
+    function submit() {
+        var id = $('#item_id').val();
+        var rp = $('#retail_price').val();
+        var nq = $('#new_qty').val();
+        if (id == "" || isNaN(id) || id == null) {
+            alert("No item is Selected");
+            return;
+        }
+        if (rp == "" || isNaN(rp) || rp == null) {
+            alert("Retail Price cannot be null");
+            return;
+        }
+        if (nq == "" || isNaN(nq) || nq == null) {
+            alert("Please Enter New Quantiy");
+            return;
+        }
+        $.ajax({
+
+            type: "POST",
+            url: "http://localhost/GPOS/items/Enter_New_Stock?item_id=" + id + "&retail_price=" + rp + "&new_qty=" + nq,
+            success: function () {
+                location.reload();
+            }
+        });
+    }
+</script>
+

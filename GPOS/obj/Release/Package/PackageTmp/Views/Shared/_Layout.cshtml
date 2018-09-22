@@ -39,6 +39,7 @@
               .Items(invchild =>
               {
                   invchild.Add().Text("Stock").Action("Index", "items");
+                  invchild.Add().Text("New Stock").Action("Enter_New_Stock", "items");
                   //invchild.Add().Text("Packages").Action("Index", "Package");
               });
           item.Add().Text("Cusotmer")

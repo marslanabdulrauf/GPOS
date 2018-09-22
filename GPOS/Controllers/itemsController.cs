@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Newtonsoft.Json;
 using GPOS.Models;
 using GPOSDAL;
 using Kendo.Mvc.Extensions;
@@ -74,6 +75,20 @@ namespace GPOS.Controllers
                 products = products.Where(i => i.Barcode == "-1");
             }
             return Json(products, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult Enter_New_Stock()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public void Enter_New_Stock([System.Web.Http.FromUri]int item_id, [System.Web.Http.FromUri]int retail_price, [System.Web.Http.FromUri]int new_qty)
+        {
+            item i = new itemModel().GetAll().Where(x => x.id == item_id).ToList()[0];
+            i.retail_price = retail_price;
+            i.qty = i.qty + new_qty;
+            new itemModel().Update(i);
         }
     }
 }
