@@ -8,8 +8,8 @@ function Data() {
 }
 
 function empty() {
-    $('#products').data('kendoAutoComplete').value("");
-    $('#products').data('kendoAutoComplete').focus();
+    $('#products').val("");
+    $('#products').focus();
 }
 
 function takeQuantity() {
@@ -20,7 +20,7 @@ function takeQuantity() {
 }
 
 function AddTotal(amnt) {
-    var prev = parseInt($('#tot').data("kendoNumericTextBox").value());
+    var prev = parseInt($('#tot').val());
     var now = prev + amnt;
     var box = $("#tot").data("kendoNumericTextBox");
     box.value(now);
@@ -59,7 +59,7 @@ function calBalance() {
 function reCalBalance() {
     var dis;
     try {
-        dis = $('#dis').data("kendoNumericTextBox").value();
+        dis = $('#dis').val();
     } catch (e) {
         $('#dis').data("kendoNumericTextBox").value(0);
         dis = 0;
@@ -71,7 +71,8 @@ function reCalBalance() {
     var prev = $('#tot').data("kendoNumericTextBox").value();
     var now = prev - dis;
     $('#tot').data("kendoNumericTextBox").value(now);
-    $('#rcv').data("KendoNumericTextBox").value("");
+    $('#rcv').val("");
+    $('#blnce').val("");
 }
 
 function FindAndAdd(dataitem,qty) {
@@ -131,8 +132,17 @@ function FindAndAdd(dataitem,qty) {
     }
 }
 
-function getOrder(e) {
-    var dataitem = this.dataItem(e.item.index());
+function autoSelectFirst(e) {
+    if (this.view().length == 1) {
+        getOrder(this.view()[0]);
+    }
+}
+
+function selected(e) {
+    getOrder(this.dataItem(e.item.index()));
+}
+
+function getOrder(dataitem) {
     var qty = takeQuantity();
     if (dataitem.qty < qty) {
         document.getElementById('errmsg').innerHTML = "Remaining "+ dataitem.name +" : " + dataitem.qty;
@@ -190,6 +200,8 @@ function getOrder(e) {
     }
     document.getElementById('blnce').value = 0;
     document.getElementById('rcv').value = "";
+    $('#products').val("");
+    $('#products').focus();
 }
 
 $(document).ready(function () {
