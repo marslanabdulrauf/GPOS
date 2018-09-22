@@ -53,8 +53,8 @@ namespace GPOS.Controllers.api
                 try
                 {
                     ReceiptReport po = new ReceiptReport();
-                    po.SetParameterValue("OID", ordernumber);
-                    po.PrintToPrinter(1, false, 0, 0);
+                    //po.SetParameterValue("OID", ordernumber);
+                    //po.PrintToPrinter(1, false, 0, 0);
                     return Ok();
                 }
                 catch
@@ -151,8 +151,8 @@ namespace GPOS.Controllers.api
         public IHttpActionResult ReprintOrder([FromUri]int id)
         {
             ReceiptReport po = new ReceiptReport();
-            po.SetParameterValue("OID", id);
-            po.PrintToPrinter(1, false, 0, 0);
+            //po.SetParameterValue("OID", id);
+            //po.PrintToPrinter(1, false, 0, 0);
             return Ok();
         }
         public IHttpActionResult createCustomer([FromUri] string customer_name, [FromUri] string customer_phone, [FromUri] string customer_address )
