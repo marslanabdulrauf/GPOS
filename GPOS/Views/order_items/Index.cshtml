@@ -1,0 +1,47 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+
+@(Html.Kendo().Grid<GPOSDAL.order_items>()
+            .Name("order_grid")
+            .Columns(c =>
+            {
+                c.Bound(oi => oi.oid).Title("Receipt #").Width(120);
+                c.Bound(oi => oi.item.name).Title("Item Name").Width(120);
+                c.Bound(oi => oi.item.company).Title("Comapany").Width(120);
+                c.Bound(oi => oi.item.retail_price).Title("Price").Width(120);
+                c.Bound(oi => oi.qty).Title("QTY").Width(120)
+                .ClientFooterTemplate("Total Quantities : #:sum#");
+                c.Bound(oi => oi.total).Title("Item Total").Width(120)
+                .ClientFooterTemplate("Total Amount : #:sum#");
+                c.Bound(oi => oi.profit).Title("Profit").Width(120)
+                .ClientFooterTemplate("Total Profit : #:sum#");
+                c.Bound(oi => oi.order.customer.name).Title("Customer").Width(130);
+            })
+            .ToolBar(t => t.Excel())
+            .Pageable()
+            .Filterable()
+            .Sortable()
+            .Groupable()
+            .Excel(e => e.FileName("Order Report.xlsx").Filterable(true))
+            .Scrollable()
+            .Resizable(r => r.Columns(true))
+            .Mobile()
+            .Navigatable()
+            .HtmlAttributes(new { style = "height:550px;" })
+            .Reorderable(builder => builder.Columns(true))
+            .DataSource(ds => ds
+                  .Ajax()
+                  .PageSize(10)
+                  .Read(read => read.Action("Read", "order_items"))
+                  .Group(g=>g.Add(oi=>oi.oid))
+                  .Aggregates(ag=> {
+                      ag.Add(oi => oi.qty).Sum();
+                      ag.Add(oi => oi.profit).Sum();
+                      ag.Add(oi => oi.total).Sum();
+                  })
+              )
+
+)

@@ -214,6 +214,7 @@
     <Compile Include="Controllers\itemsController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\orderController.cs" />
+    <Compile Include="Controllers\order_itemsController.cs" />
     <Compile Include="CrystalReports\PrintOrder.cs">
       <DependentUpon>PrintOrder.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -1988,6 +1989,7 @@
     <Content Include="Views\order\Index.cshtml" />
     <Content Include="Views\customer\Index.cshtml" />
     <Content Include="Views\items\Enter_New_Stock.cshtml" />
+    <Content Include="Views\order_items\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

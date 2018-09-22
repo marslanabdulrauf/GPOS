@@ -248,7 +248,7 @@
     <Property Name="profit" Type="Int32" Nullable="false" />
     <Property Name="disc" Type="Int32" Nullable="false" />
     <NavigationProperty Name="item" Relationship="GPOSModel.FK_order_items_item" FromRole="order_items" ToRole="item" a:GetterAccess="Public" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" a:SetterAccess="Protected" />
-    <NavigationProperty Name="order" Relationship="GPOSModel.FK_order_items_orders" FromRole="order_items" ToRole="order" a:GetterAccess="Protected" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" />
+    <NavigationProperty Name="order" Relationship="GPOSModel.FK_order_items_orders" FromRole="order_items" ToRole="order" a:GetterAccess="Public" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" />
   </EntityType>
   <EntityType Name="order_packages">
     <Key>

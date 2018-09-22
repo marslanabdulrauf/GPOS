@@ -23,6 +23,6 @@ namespace GPOSDAL
         public int disc { get; set; }
     
         public virtual item item { get; protected set; }
-        public virtual order order { protected get; set; }
+        public virtual order order { get; set; }
     }
 }
