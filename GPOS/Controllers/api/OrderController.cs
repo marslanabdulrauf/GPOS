@@ -54,6 +54,7 @@ namespace GPOS.Controllers.api
                 {
                     ReceiptReport po = new ReceiptReport();
                     //po.SetParameterValue("OID", ordernumber);
+                    //po.SetParameterValue("discount", dis);
                     //po.PrintToPrinter(1, false, 0, 0);
                     return Ok();
                 }

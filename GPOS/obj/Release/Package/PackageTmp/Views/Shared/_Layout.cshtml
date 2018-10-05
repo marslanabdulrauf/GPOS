@@ -34,6 +34,7 @@
               {
                   orderchildren.Add().Text("Place Order").Action("PlaceOrder", "Home");
                   orderchildren.Add().Text("Order Management").Action("Index", "order");
+                  orderchildren.Add().Text("Order Management[New]").Action("Index", "order_items");
               });
           item.Add().Text("Inventory")
               .Items(invchild =>
