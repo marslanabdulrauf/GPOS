@@ -1,5 +1,6 @@
 ﻿var items = [];
 var customer_id = -1;
+var base_url = "http://localhost/GPOS"
 
 function Data() {
     return {
@@ -235,7 +236,7 @@ function checkout() {
         var rcv = $('#rcv').val();
         $.ajax({
             type: "POST",
-            url: "http://localhost:62546/api/Order/SetOrder?items=" +
+            url: base_url + "/api/Order/SetOrder?items=" +
             items +
             "&tot=" +
             tot +
@@ -262,7 +263,7 @@ function checkout() {
         var caddress = $('#customer_address').val();
         $.ajax({
             type: "POST",
-            url: "http://localhost:62546/api/Order/createCustomer?customer_name=" + cname + "&customer_address=" + caddress + "&customer_phone=" + cphone,
+            url: base_url + "/api/Order/createCustomer?customer_name=" + cname + "&customer_address=" + caddress + "&customer_phone=" + cphone,
             success: function (res) {
                 customer_id = res;
                 var tot = $('#tot').val();
@@ -270,7 +271,7 @@ function checkout() {
                 var rcv = $('#rcv').val();
                 $.ajax({
                     type: "POST",
-                    url: "http://localhost:62546/api/Order/SetOrder?items=" +
+                    url: base_url + "/api/Order/SetOrder?items=" +
                     items +
                     "&tot=" +
                     tot +
