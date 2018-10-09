@@ -135,16 +135,22 @@ function FindAndAdd(dataitem,qty) {
 
 function autoSelectFirst(e) {
     if (this.view().length == 1) {
-        getOrder(this.view()[0]);
+        getOrder(this.view()[0], false);
     }
 }
 
 function selected(e) {
-    getOrder(this.dataItem(e.item.index()));
+    getOrder(this.dataItem(e.item.index()), true);
 }
 
-function getOrder(dataitem) {
-    var qty = takeQuantity();
+function getOrder(dataitem, qnty) {
+    
+    if (qnty) {
+        var qty = takeQuantity();
+    }
+    else {
+        qty = 1;
+    }
     if (dataitem.qty < qty) {
         document.getElementById('errmsg').innerHTML = "Remaining "+ dataitem.name +" : " + dataitem.qty;
         $('#alertModel').modal();
