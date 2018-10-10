@@ -1,5 +1,6 @@
 ﻿var items = [];
 var customer_id = -1;
+var base_url = "http://localhost/GPOS"
 
 function Data() {
     return {
@@ -134,16 +135,22 @@ function FindAndAdd(dataitem,qty) {
 
 function autoSelectFirst(e) {
     if (this.view().length == 1) {
-        getOrder(this.view()[0]);
+        getOrder(this.view()[0], false);
     }
 }
 
 function selected(e) {
-    getOrder(this.dataItem(e.item.index()));
+    getOrder(this.dataItem(e.item.index()), true);
 }
 
-function getOrder(dataitem) {
-    var qty = takeQuantity();
+function getOrder(dataitem, qnty) {
+    
+    if (qnty) {
+        var qty = takeQuantity();
+    }
+    else {
+        qty = 1;
+    }
     if (dataitem.qty < qty) {
         document.getElementById('errmsg').innerHTML = "Remaining "+ dataitem.name +" : " + dataitem.qty;
         $('#alertModel').modal();
@@ -235,7 +242,7 @@ function checkout() {
         var rcv = $('#rcv').val();
         $.ajax({
             type: "POST",
-            url: "http://localhost:62546/api/Order/SetOrder?items=" +
+            url: base_url + "/api/Order/SetOrder?items=" +
             items +
             "&tot=" +
             tot +
@@ -262,7 +269,7 @@ function checkout() {
         var caddress = $('#customer_address').val();
         $.ajax({
             type: "POST",
-            url: "http://localhost:62546/api/Order/createCustomer?customer_name=" + cname + "&customer_address=" + caddress + "&customer_phone=" + cphone,
+            url: base_url + "/api/Order/createCustomer?customer_name=" + cname + "&customer_address=" + caddress + "&customer_phone=" + cphone,
             success: function (res) {
                 customer_id = res;
                 var tot = $('#tot').val();
@@ -270,7 +277,7 @@ function checkout() {
                 var rcv = $('#rcv').val();
                 $.ajax({
                     type: "POST",
-                    url: "http://localhost:62546/api/Order/SetOrder?items=" +
+                    url: base_url + "/api/Order/SetOrder?items=" +
                     items +
                     "&tot=" +
                     tot +
