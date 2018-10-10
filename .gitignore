@@ -1,1 +1,4 @@
 .vs
+GPOS/Web.config
+GPOS/App_Data
+GPOSDAL/App.config
