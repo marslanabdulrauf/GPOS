@@ -78,6 +78,10 @@
           )
 </script>
 <script>
+    var local_deploy_url = "http://localhost:62546";
+    var customer_deploy_url = "http://localhost/GPOS"
+    var online_deploy_url = "http://gpos.freeasphost.net"
+    var base_url = customer_deploy_url;
     function dataBound() {
         this.expandRow(this.tbody.find("tr.k-master-row").first());
     }
@@ -87,7 +91,7 @@
         var dataitem = this.dataItem($(e.currentTarget).closest("tr"));
         $.ajax({
             type: "POST",
-            url: "http://localhost/GPOS/api/Order/ReprintOrder?id=" + dataitem.id,
+            url: base_url + "/api/Order/ReprintOrder?id=" + dataitem.id,
             success: function (res) {
                 alert("Order Re-Printed.!");
             },
@@ -116,7 +120,7 @@
         else {
             $.ajax({
                 type: "POST",
-                url: "http://localhost/GPOS/api/Order/Return_item?item_id=" + dataitem.item_id + "&qty=" + new_qty + "&oid=" + dataitem.oid,
+                url: base_url + "/api/Order/Return_item?item_id=" + dataitem.item_id + "&qty=" + new_qty + "&oid=" + dataitem.oid,
                 success: function (res) {
                     alert("Item Returned Successfully!");
                 },

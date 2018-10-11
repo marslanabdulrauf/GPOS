@@ -1,6 +1,9 @@
 ﻿var items = [];
 var customer_id = -1;
-var base_url = "http://localhost/GPOS"
+var local_deploy_url = "http://localhost:62546";
+var customer_deploy_url = "http://localhost/GPOS"
+var online_deploy_url = "http://gpos.freeasphost.net"
+var base_url = customer_deploy_url;
 
 function Data() {
     return {

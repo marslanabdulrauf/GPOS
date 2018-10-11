@@ -50,6 +50,10 @@
 </div>
 
 <script>
+    var local_deploy_url = "http://localhost:62546";
+    var customer_deploy_url = "http://localhost/GPOS"
+    var online_deploy_url = "http://gpos.freeasphost.net"
+    var base_url = customer_deploy_url;
     function autoSelectFirst(e) {
         if (this.view().length == 1) {
             setData(this.view()[0]);
@@ -90,7 +94,7 @@
         $.ajax({
 
             type: "POST",
-            url: "http://localhost/GPOS/items/Enter_New_Stock?item_id=" + id + "&retail_price=" + rp + "&new_qty=" + nq,
+            url: base_url + "/items/Enter_New_Stock?item_id=" + id + "&retail_price=" + rp + "&new_qty=" + nq,
             success: function () {
                 location.reload();
             }
